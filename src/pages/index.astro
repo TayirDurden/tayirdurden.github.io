@@ -1,0 +1,292 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const allChapters = await getCollection('novel');
+
+function processChapters(langPrefix) {
+  return allChapters
+    .filter(entry => entry.slug.startsWith(`${langPrefix}/`))
+    .map(entry => {
+      // Calculate reading time (avg 200 words per minute)
+      const words = entry.body ? entry.body.split(/\s+/).length : 0;
+      const readTime = Math.ceil(words / 200);
+
+      const filenameNum = parseInt(entry.slug.match(/\d+$/)?.[0] || "999");
+      return {
+        ...entry,
+        readTime,
+        sortOrder: entry.data.order ?? entry.data.chapter_number ?? filenameNum,
+        linkSlug: entry.slug.split('/')[1],
+        lang: langPrefix
+      };
+    })
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+}
+
+const trChapters = processChapters('tr');
+const enChapters = processChapters('en');
+---
+
+<Layout title="Zero Sum City">
+  <div class="bg-layer"></div>
+
+  <main class="toc-container">
+    <div id="resume-container" style="display: none;">
+      <a id="resume-link" href="#" class="resume-banner">
+        <span class="resume-label">Last Read</span>
+        <span id="resume-title" class="resume-title"></span>
+        <span class="resume-arrow">→</span>
+      </a>
+    </div>
+
+    <header class="toc-header">
+      <h1>Zero Sum City</h1>
+      <p class="author">By Mahmut Tahsin Ülgen</p>
+      
+      <div class="theme-drawer-container" id="theme-drawer">
+        <button class="theme-toggle-btn" onclick="toggleThemeDrawer()">🎨 Theme</button>
+        <div class="theme-options">
+          <button class="theme-btn light" onclick="setTheme('light')"></button>
+          <button class="theme-btn sepia" onclick="setTheme('sepia')"></button>
+          <button class="theme-btn dark" onclick="setTheme('dark')"></button>
+          <button class="clear-history-btn" onclick="clearReadingHistory()" title="Clear History">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button id="tab-tr" class="tab-btn active" onclick="switchTab('tr')">Türkçe</button>
+        <span class="tab-divider">/</span>
+        <button id="tab-en" class="tab-btn" onclick="switchTab('en')">English</button>
+      </div>
+    </header>
+
+    <section id="list-en" class="chapter-list-container" style="display: none;">
+      <div class="vertical-list">
+        {enChapters.map((chapter) => (
+          <a href={`/${chapter.lang}/${chapter.linkSlug}`} class="chapter-button">
+            <span class="chapter-badge">Ch. {chapter.sortOrder}</span>
+            <span class="chapter-name" transition:name={`title-${chapter.lang}-${chapter.sortOrder}`}>{chapter.data.title}</span>
+            <span class="read-time">{chapter.readTime} min</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="list-tr" class="chapter-list-container">
+      <div class="vertical-list">
+        {trChapters.map((chapter) => (
+          <a href={`/${chapter.lang}/${chapter.linkSlug}`} class="chapter-button">
+            <span class="chapter-badge">Bölüm {chapter.sortOrder}</span>
+            <span class="chapter-name" transition:name={`title-${chapter.lang}-${chapter.sortOrder}`}>{chapter.data.title}</span>
+            <span class="read-time">{chapter.readTime} dk</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('novel-theme', theme);
+    const drawer = document.getElementById('theme-drawer');
+    if(drawer) drawer.classList.remove('active');
+  }
+
+  function toggleThemeDrawer() {
+    const drawer = document.getElementById('theme-drawer');
+    if(drawer) drawer.classList.toggle('active');
+  }
+
+  function switchTab(lang) {
+    const trList = document.getElementById('list-tr');
+    const enList = document.getElementById('list-en');
+    const trBtn = document.getElementById('tab-tr');
+    const enBtn = document.getElementById('tab-en');
+
+    if (trList && enList) {
+      trList.style.display = lang === 'tr' ? 'block' : 'none';
+      enList.style.display = lang === 'en' ? 'block' : 'none';
+    }
+    if (trBtn && enBtn) {
+      trBtn.classList.toggle('active', lang === 'tr');
+      enBtn.classList.toggle('active', lang === 'en');
+    }
+    localStorage.setItem('preferred-lang', lang);
+  }
+
+  function initResume() {
+    const path = localStorage.getItem('last-read-path');
+    const title = localStorage.getItem('last-read-title');
+    const container = document.getElementById('resume-container');
+    if (path && title && container) {
+      document.getElementById('resume-title').textContent = title;
+      document.getElementById('resume-link').href = path;
+      container.style.display = 'block';
+    } else if (container) {
+      container.style.display = 'none';
+    }
+  }
+
+  function checkFinishedChapters() {
+    const buttons = document.querySelectorAll('.chapter-button');
+    buttons.forEach(btn => {
+      const path = btn.getAttribute('href');
+      if (localStorage.getItem('finished-' + path)) {
+        btn.classList.add('finished');
+      } else {
+        btn.classList.remove('finished');
+      }
+    });
+  }
+
+  // --- NEW: CLEAR HISTORY LOGIC ---
+  function clearReadingHistory() {
+    if (confirm("Clear all reading progress and history?")) {
+      localStorage.removeItem('last-read-path');
+      localStorage.removeItem('last-read-title');
+      
+      Object.keys(localStorage).forEach(key => {
+        if (key.startsWith('finished-')) {
+          localStorage.removeItem(key);
+        }
+      });
+
+      // Update UI
+      initResume();
+      checkFinishedChapters();
+      
+      const drawer = document.getElementById('theme-drawer');
+      if(drawer) drawer.classList.remove('active');
+    }
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    setTheme(localStorage.getItem('novel-theme') || 'light');
+    switchTab(localStorage.getItem('preferred-lang') || 'tr');
+    initResume();
+    checkFinishedChapters();
+  });
+
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('theme-drawer');
+    if (drawer && !drawer.contains(e.target)) drawer.classList.remove('active');
+  });
+</script>
+
+<style is:global>
+  :root, [data-theme="light"] {
+    --bg-color: transparent; --text-color: #222222; --border-color: #dddddd;
+    --card-bg: rgba(255, 255, 255, 0.85); --accent: #007aff;
+  }
+  [data-theme="sepia"] {
+    --bg-color: transparent; --text-color: #5b4636; --border-color: #d3c9b1;
+    --card-bg: rgba(244, 236, 216, 0.9); --accent: #8c786a;
+  }
+  [data-theme="dark"] {
+    --bg-color: transparent; --text-color: #e0e0e0; --border-color: #444444;
+    --card-bg: rgba(30, 30, 30, 0.85); --accent: #bb86fc;
+  }
+  html, body { margin: 0; padding: 0; background-color: #000 !important; }
+</style>
+
+<style>
+  .chapter-button.finished::after {
+    content: '✓';
+    margin-left: auto;
+    font-weight: bold;
+    color: #2ecc71;
+    padding-left: 10px;
+  }
+
+  .chapter-button.finished {
+    border-color: rgba(46, 204, 113, 0.3);
+  }
+
+  .bg-layer {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; ;
+    background-image: url('/cover.png'); background-size: cover; background-position: center;
+    filter: blur(15px) brightness(0.9); transform: scale(1.1);
+  }
+
+  .toc-container { 
+    max-width: 700px; margin: 4rem auto; padding: 3rem; 
+    font-family: 'Georgia', serif; color: var(--text-color);
+    background: var(--card-bg); backdrop-filter: blur(5px); border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--border-color);
+  }
+
+  .resume-banner {
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    padding: 0.8rem 1.2rem; border-radius: 50px; margin-bottom: 2rem;
+    text-decoration: none; color: var(--text-color); font-family: sans-serif;
+    font-size: 0.85rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid var(--accent);
+  }
+  .resume-label { font-weight: bold; opacity: 0.5; margin-right: 10px; text-transform: uppercase; font-size: 0.7rem; }
+  .resume-title { flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-style: italic; }
+
+  .toc-header { text-align: center; margin-bottom: 2rem; }
+  .toc-header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+  
+  .theme-drawer-container { position: relative; margin-bottom: 1.5rem; text-align: center; }
+  .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 5px 15px; border-radius: 20px; cursor: pointer; }
+  
+  /* THEME OPTIONS BOX */
+  .theme-options {
+    position: absolute; top: 40px; left: 50%; transform: translateX(-50%) translateY(-10px);
+    background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px;
+    opacity: 0; pointer-events: none; transition: 0.2s; z-index: 10; align-items: center;
+  }
+  .theme-drawer-container.active .theme-options { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+  .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
+  .theme-btn.light { background: #fff !important; }
+  .theme-btn.sepia { background: #f4ecd8 !important; }
+  .theme-btn.dark { background: #333 !important; }
+
+  /* CLEAR HISTORY BUTTON STYLE */
+  .clear-history-btn {
+    width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border-color);
+    background: transparent; color: var(--text-color); cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+    opacity: 0.6; transition: all 0.2s ease; margin-left: 4px;
+  }
+  .clear-history-btn:hover { opacity: 1; background: #ff4d4d; color: white; border-color: #ff4d4d; }
+
+  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-family: sans-serif; }
+  .tab-btn { background: none; border: none; color: var(--text-color); opacity: 0.6; cursor: pointer; font-weight: bold; }
+  .tab-btn.active { opacity: 1; border-bottom: 2px solid var(--text-color); }
+
+  .vertical-list { display: flex; flex-direction: column; gap: 10px; }
+  
+  .chapter-button {
+    display: flex; align-items: center; padding: 12px 20px;
+    text-decoration: none; color: var(--text-color);
+    border: 1px solid var(--border-color); border-radius: 10px;
+    background: rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+  }
+  
+  .chapter-button:hover { 
+    background: var(--card-bg); 
+    border-color: var(--accent);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .chapter-badge {
+    font-weight: bold; min-width: 90px; font-size: 0.85rem; opacity: 0.7;
+    background: var(--border-color); padding: 4px 8px; border-radius: 5px;
+    margin-right: 15px; text-align: center; font-family: sans-serif;
+  }
+  
+  .chapter-name { flex-grow: 1; font-size: 1.1rem; }
+  .read-time { font-size: 0.7rem; opacity: 0.5; font-family: sans-serif; margin-left: 10px; }
+  .quote { font-style: italic; font-size: 0.9rem; opacity: 0.7; text-align: center; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1rem; }
+</style>

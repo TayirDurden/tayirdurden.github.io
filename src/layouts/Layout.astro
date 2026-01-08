@@ -1,0 +1,33 @@
+---
+// Import goes here in the frontmatter, not in a <script> tag
+import { ClientRouter } from 'astro:transitions';
+
+const { title = "Zero Sum City" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+		<ClientRouter />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	/* is:global ensures these basics apply to all pages using this layout */
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		max-height: 100vh;
+	}
+</style>
