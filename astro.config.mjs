@@ -1,6 +1,7 @@
-import { defineConfig } from 'astro:content';
+import { defineConfig } from 'astro/config';
 
+// https://astro.build/config
 export default defineConfig({
   site: 'https://tahirurge.com',
-  // Since this is your main domain, DO NOT add a 'base' property.
+  // DO NOT import anything from 'astro:content' here!
 });
