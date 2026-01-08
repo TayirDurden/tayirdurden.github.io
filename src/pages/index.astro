@@ -45,7 +45,10 @@ const enChapters = processChapters('en');
       <p class="author">By Mahmut Tahsin Ülgen</p>
       
       <div class="theme-drawer-container" id="theme-drawer">
-        <button class="theme-toggle-btn" onclick="toggleThemeDrawer()">🎨 Theme</button>
+        <button class="theme-toggle-btn" onclick="toggleThemeDrawer()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          Appearance
+        </button>
         <div class="theme-options">
           <button class="theme-btn light" onclick="setTheme('light')"></button>
           <button class="theme-btn sepia" onclick="setTheme('sepia')"></button>
@@ -216,11 +219,14 @@ const enChapters = processChapters('en');
   .toc-header { text-align: center; margin-bottom: 2rem; }
   .toc-header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
   .theme-drawer-container { position: relative; margin-bottom: 1.5rem; text-align: center; }
-  .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 5px 15px; border-radius: 20px; cursor: pointer; }
+  .theme-toggle-btn { 
+    background: none; border: 1px solid var(--border-color); color: var(--text-color); 
+    padding: 8px 18px; border-radius: 20px; cursor: pointer; font-family: sans-serif;
+    display: inline-flex; align-items: center;
+  }
   
-  /* FIXED THEME OPTIONS BOX */
   .theme-options {
-    position: absolute; top: 40px; left: 50%; transform: translateX(-50%) translateY(-10px);
+    position: absolute; top: 45px; left: 50%; transform: translateX(-50%) translateY(-10px);
     background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px;
     opacity: 0; pointer-events: none; transition: 0.2s; z-index: 100; align-items: center;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
