@@ -112,49 +112,74 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  function runNovelScripts() {
-    const trigger = document.getElementById('theme-trigger');
-    const menu = document.getElementById('theme-menu');
-    const dots = document.querySelectorAll('[data-set-t]');
-
-    if (trigger && menu) {
-      trigger.onclick = (e) => {
-        e.stopPropagation();
-        menu.classList.toggle('open');
-      };
-    }
-
-    dots.forEach(dot => {
-      dot.onclick = (e) => {
-        e.stopPropagation();
-        const theme = dot.getAttribute('data-set-t');
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('novel-theme', theme);
-        menu?.classList.remove('open');
-      };
-    });
-
-    const zIn = document.getElementById('z-in');
-    const zOut = document.getElementById('z-out');
-    const content = document.getElementById('novel-content');
-
-    const changeSize = (amt) => {
-      let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-      cur = Math.max(0.8, Math.min(2.5, cur + amt));
-      if (content) content.style.fontSize = cur + "rem";
-      localStorage.setItem('novel-font-size', cur);
-    };
-
-    if (zIn) zIn.onclick = () => changeSize(0.1);
-    if (zOut) zOut.onclick = () => changeSize(-0.1);
-
-    const savedT = localStorage.getItem('novel-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedT);
-    const savedS = localStorage.getItem('novel-font-size') || 1.2;
-    if (content) content.style.fontSize = savedS + "rem";
+  // 1. Theme and Font Functions
+  function applyTheme(theme) {
+    if (!theme) return;
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('novel-theme', theme);
   }
 
-  function handleScroll() {
+  function applyFontSize(size) {
+    const content = document.getElementById('novel-content');
+    if (content) content.style.fontSize = size + "rem";
+    localStorage.setItem('novel-font-size', size);
+  }
+
+  // 2. Global Click Listener (The Fix)
+  // We attach this to document once; it stays alive during Astro transitions
+  if (!window.themeInitialized) {
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      
+      // Theme Toggle Button
+      if (target.closest('#theme-trigger')) {
+        e.stopPropagation();
+        document.getElementById('theme-menu')?.classList.toggle('open');
+        return;
+      }
+
+      // Individual Theme Color Dots
+      const themeDot = target.closest('[data-set-t]');
+      if (themeDot) {
+        applyTheme(themeDot.getAttribute('data-set-t'));
+        document.getElementById('theme-menu')?.classList.remove('open');
+        return;
+      }
+
+      // Zoom Buttons
+      if (target.closest('#z-in') || target.closest('#z-out')) {
+        let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
+        const next = target.closest('#z-in') ? cur + 0.1 : cur - 0.1;
+        applyFontSize(Math.max(0.8, Math.min(2.5, next)));
+        return;
+      }
+
+      // Close drawer if clicking away
+      const menu = document.getElementById('theme-menu');
+      if (menu && !menu.contains(target)) {
+        menu.classList.remove('open');
+      }
+    });
+    window.themeInitialized = true;
+  }
+
+  // 3. Page Load Setup
+  document.addEventListener('astro:page-load', () => {
+    // Re-apply saved settings on navigation
+    applyTheme(localStorage.getItem('novel-theme') || 'light');
+    applyFontSize(localStorage.getItem('novel-font-size') || 1.2);
+
+    // Progress logic
+    const num = document.getElementById('raw-num')?.innerText;
+    const title = document.getElementById('raw-title')?.innerText;
+    if (num && title) {
+      localStorage.setItem('last-read-path', window.location.pathname);
+      localStorage.setItem('last-read-title', `Chapter ${num}: ${title}`);
+    }
+  });
+
+  // 4. Scroll Progress
+  window.onscroll = () => {
     const win = document.documentElement.scrollTop;
     const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (total <= 0) return;
@@ -166,12 +191,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       const path = window.location.pathname.replace(/\/$/, "");
       localStorage.setItem('finished-' + path, 'true');
     }
-  }
-
-  document.addEventListener('astro:page-load', () => {
-    runNovelScripts();
-    window.addEventListener('scroll', handleScroll);
-  });
+  };
 </script>
 
 <style is:global>
