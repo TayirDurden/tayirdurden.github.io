@@ -82,28 +82,28 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         <button class="nav-action-btn" id="theme-trigger" title="Appearance">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
-        <div class="theme-menu-box" id="theme-menu">
-          <button class="color-dot light" data-set-t="light"></button>
-          <button class="color-dot sepia" data-set-t="sepia"></button>
-          <button class="color-dot dark" data-set-t="dark"></button>
+        <div class="theme-options" id="theme-menu">
+          <button class="theme-btn light" data-set-theme="light"></button>
+          <button class="theme-btn sepia" data-set-theme="sepia"></button>
+          <button class="theme-btn dark" data-set-theme="dark"></button>
         </div>
       </div>
 
-      <div class="zoom-controls section-divider zoom-wrapper">
-        <button class="zoom-text-btn" id="z-out">A-</button>
-        <button class="zoom-text-btn" id="z-in">A+</button>
+      <div class="zoom-controls section-divider">
+        <button class="zoom-btn" id="font-dec">A-</button>
+        <button class="zoom-btn" id="font-inc">A+</button>
       </div>
 
-      <a href="/" class="nav-btn-link nav-section-divider" title="Home">
+      <a href="/" class="nav-btn-link section-divider" title="Home">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </a>
 
       {nextSlug ? (
-        <a href={`/${lang}/${nextSlug}`} class="nav-btn-link nav-section-divider" title="Next">
+        <a href={`/${lang}/${nextSlug}`} class="nav-btn-link section-divider" title="Next">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
       ) : (
-        <span class="nav-btn-link disabled nav-section-divider">
+        <span class="nav-btn-link disabled section-divider">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </span>
       )}
@@ -112,48 +112,46 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  function applyTheme(theme) {
-    if (!theme) return;
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('novel-theme', theme);
-  }
-
-  function applyFontSize(size) {
-    const content = document.getElementById('novel-content');
-    if (content) content.style.fontSize = size + "rem";
-    localStorage.setItem('novel-font-size', size);
-  }
-
-  if (!window.themeInitialized) {
+  // GLOBAL EVENT LISTENER (The only way to ensure buttons work after Astro navigation)
+  if (!window.readerInitialized) {
     document.addEventListener('click', (e) => {
       const target = e.target;
-      
+
+      // 1. Theme Drawer Toggle
       if (target.closest('#theme-trigger')) {
         e.stopPropagation();
-        document.getElementById('theme-menu')?.classList.toggle('open');
+        document.getElementById('theme-menu')?.classList.toggle('active');
         return;
       }
 
-      const themeDot = target.closest('[data-set-t]');
-      if (themeDot) {
-        applyTheme(themeDot.getAttribute('data-set-t'));
-        document.getElementById('theme-menu')?.classList.remove('open');
+      // 2. Setting Theme
+      const themeBtn = target.closest('[data-set-theme]');
+      if (themeBtn) {
+        const theme = themeBtn.getAttribute('data-set-theme');
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('novel-theme', theme);
+        document.getElementById('theme-menu')?.classList.remove('active');
         return;
       }
 
-      if (target.closest('#z-in') || target.closest('#z-out')) {
+      // 3. Font Size
+      if (target.closest('#font-inc') || target.closest('#font-dec')) {
         let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-        const next = target.closest('#z-in') ? cur + 0.1 : cur - 0.1;
-        applyFontSize(Math.max(0.8, Math.min(2.5, next)));
+        const next = target.closest('#font-inc') ? cur + 0.1 : cur - 0.1;
+        const final = Math.max(0.8, Math.min(2.5, next));
+        const content = document.getElementById('novel-content');
+        if (content) content.style.fontSize = final + "rem";
+        localStorage.setItem('novel-font-size', final);
         return;
       }
 
+      // 4. Close menu if clicking away
       const menu = document.getElementById('theme-menu');
       if (menu && !menu.contains(target)) {
-        menu.classList.remove('open');
+        menu.classList.remove('active');
       }
     });
-    window.themeInitialized = true;
+    window.readerInitialized = true;
   }
 
   function updateScroll() {
@@ -163,7 +161,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     const pct = (win / total) * 100;
     const bar = document.getElementById("myBar");
     if (bar) bar.style.width = pct + "%";
-
     if (pct > 95) {
       const path = window.location.pathname.replace(/\/$/, "");
       localStorage.setItem('finished-' + path, 'true');
@@ -171,18 +168,24 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   }
 
   document.addEventListener('astro:page-load', () => {
-    applyTheme(localStorage.getItem('novel-theme') || 'light');
-    applyFontSize(localStorage.getItem('novel-font-size') || 1.2);
+    // Re-apply preferences
+    const savedTheme = localStorage.getItem('novel-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const savedSize = localStorage.getItem('novel-font-size') || 1.2;
+    const content = document.getElementById('novel-content');
+    if (content) content.style.fontSize = savedSize + "rem";
 
+    // Progress logic
     const num = document.getElementById('raw-num')?.innerText;
     const title = document.getElementById('raw-title')?.innerText;
     if (num && title) {
       localStorage.setItem('last-read-path', window.location.pathname);
-      localStorage.setItem('last-read-title', `Chapter ${num}: ${title}`);
+      localStorage.setItem('last-read-title', "Chapter " + num + ": " + title);
     }
 
     window.addEventListener('scroll', updateScroll);
 
+    // Sticky Header
     const sticky = document.getElementById('sticky-header');
     const main = document.getElementById('main-header');
     if (sticky && main) {
@@ -229,10 +232,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .sticky-header.visible { transform: translateY(0); }
   .sticky-text { font-family: 'Georgia', serif; font-size: 1rem; }
   .sticky-num { font-weight: bold; opacity: 0.7; margin-right: 10px; text-transform: uppercase; font-size: 0.8rem; }
-  .sticky-divider { margin-right: 10px; opacity: 0.3; }
   .chapter-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 150px 1.5rem; font-family: 'Georgia', serif; }
   .chapter-header { text-align: center; margin-bottom: 3rem; }
-  .chapter-number { color: var(--meta-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
   .chapter-header h1 { font-size: 2.5rem; margin-top: 0.5rem; }
   .separator { border: 0; border-top: 1px solid var(--border-color); width: 100px; margin: 2rem auto; }
   .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
@@ -243,29 +244,26 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     background: var(--nav-bg); backdrop-filter: blur(15px);
     height: 50px; border: 1px solid var(--border-color);
     border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: flex; align-items: center; justify-content: center; z-index: 1000;
-    overflow: hidden; padding: 0 5px;
+    display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 0 5px;
   }
-  .nav-btn-link, #theme-drawer, .zoom-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 100%; }
-  .nav-section-divider { border-left: 1px solid var(--border-color) !important; }
-  .nav-btn-link, .nav-action-btn { width: 50px; background: transparent; border: none; cursor: pointer; text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: center; }
+  .nav-btn-link, .theme-drawer-container, .zoom-controls { display: inline-flex; align-items: center; justify-content: center; height: 100%; width: 50px; }
+  .zoom-controls { width: auto; padding: 0 10px; gap: 10px; }
+  .section-divider { border-left: 1px solid var(--border-color) !important; }
+  
+  .nav-action-btn, .zoom-btn { background: transparent; border: none; cursor: pointer; color: inherit; display: flex; align-items: center; justify-content: center; }
   .nav-btn-link svg, .nav-action-btn svg { stroke: var(--text-color); }
   .nav-btn-link.disabled { opacity: 0.2; pointer-events: none; }
 
-  #theme-drawer { position: relative; }
-  .theme-menu-box {
+  .theme-options {
     position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%) translateY(10px);
     background: var(--nav-bg); border: 1px solid var(--border-color);
     padding: 12px; border-radius: 20px; display: flex; gap: 12px;
     opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    align-items: center; z-index: 1001;
   }
-  .theme-menu-box.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  .color-dot { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; padding: 0; flex-shrink: 0; }
-  .color-dot.light { background: #fff !important; }
-  .color-dot.sepia { background: #f4ecd8 !important; }
-  .color-dot.dark { background: #333 !important; }
-
-  .zoom-wrapper { padding: 0 12px; gap: 12px; }
-  .zoom-text-btn { background: transparent !important; border: none; font-family: sans-serif; font-weight: bold; font-size: 0.85rem; color: var(--text-color); cursor: pointer; }
+  .theme-options.active { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .theme-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
+  .theme-btn.light { background: #fff !important; }
+  .theme-btn.sepia { background: #f4ecd8 !important; }
+  .theme-btn.dark { background: #333 !important; }
+  .zoom-btn { font-family: sans-serif; font-weight: bold; font-size: 0.85rem; }
 </style>
