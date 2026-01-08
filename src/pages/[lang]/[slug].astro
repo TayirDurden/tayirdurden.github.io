@@ -78,7 +78,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         </span>
       )}
 
-      <div class="theme-drawer-container" id="theme-drawer">
+      <div class="theme-drawer-container section-divider" id="theme-drawer">
         <button class="btn theme-toggle-btn" onclick="toggleThemeDrawer()" title="Appearance">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
@@ -89,21 +89,21 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         </div>
       </div>
 
-      <div class="zoom-controls">
+      <div class="zoom-controls section-divider">
         <button class="btn zoom-btn" onclick="adjustFontSize(-0.1)">A-</button>
         <button class="btn zoom-btn" onclick="adjustFontSize(0.1)">A+</button>
       </div>
 
-      <a href="/" class="btn home" title="Library">
+      <a href="/" class="btn home section-divider" title="Library">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </a>
 
       {nextSlug ? (
-        <a href={`/${lang}/${nextSlug}`} class="btn icon-btn" title="Next">
+        <a href={`/${lang}/${nextSlug}`} class="btn icon-btn section-divider" title="Next">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
       ) : (
-        <span class="btn icon-btn disabled">
+        <span class="btn icon-btn disabled section-divider">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </span>
       )}
@@ -121,26 +121,10 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     if(bar) bar.style.width = scrolled + "%";
 
     if (scrolled > 95) {
-      localStorage.setItem('finished-' + window.location.pathname, 'true');
+      // Logic Fix: Ensure consistent path naming
+      const path = window.location.pathname.replace(/\/$/, "");
+      localStorage.setItem('finished-' + path, 'true');
     }
-  }
-
-  function initReader() {
-    const num = document.getElementById('raw-num')?.innerText || "";
-    const mainTitle = document.getElementById('raw-title')?.innerText || "";
-    
-    if (num && mainTitle) {
-      localStorage.setItem('last-read-path', window.location.pathname);
-      localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
-    }
-
-    setTheme(localStorage.getItem('novel-theme') || 'light');
-    
-    let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-    const content = document.getElementById('novel-content');
-    if (content) content.style.fontSize = `${currentSize}rem`;
-    
-    window.addEventListener('scroll', updateScroll);
   }
 
   function setTheme(theme) {
@@ -163,6 +147,24 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     const content = document.getElementById('novel-content');
     if (content) content.style.fontSize = `${currentSize}rem`;
     localStorage.setItem('novel-font-size', currentSize);
+  }
+
+  function initReader() {
+    const num = document.getElementById('raw-num')?.innerText || "";
+    const mainTitle = document.getElementById('raw-title')?.innerText || "";
+    
+    if (num && mainTitle) {
+      localStorage.setItem('last-read-path', window.location.pathname);
+      localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
+    }
+
+    setTheme(localStorage.getItem('novel-theme') || 'light');
+    
+    let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
+    const content = document.getElementById('novel-content');
+    if (content) content.style.fontSize = `${currentSize}rem`;
+    
+    window.addEventListener('scroll', updateScroll);
   }
 
   document.addEventListener('astro:page-load', () => {
@@ -230,7 +232,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
   .chapter-text :global(p) { margin-bottom: 1.5em; text-align: justify; }
 
-  /* SYMMETRICAL NAV BAR */
+  /* NAVIGATION BAR CONSISTENCY FIX */
   .nav-buttons {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
     background: var(--nav-bg); backdrop-filter: blur(15px);
@@ -247,10 +249,9 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     height: 100%;
   }
 
-  /* Dividers only next to arrow buttons */
-  .theme-drawer-container,
-  .btn.icon-btn:last-child {
-    border-left: 1px solid var(--border-color);
+  /* Consistent Section Dividers */
+  .section-divider {
+    border-left: 1px solid var(--border-color) !important;
   }
 
   .btn.icon-btn, .btn.home, .theme-toggle-btn { width: 50px; }

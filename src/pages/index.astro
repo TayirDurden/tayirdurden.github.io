@@ -139,8 +139,9 @@ const enChapters = processChapters('en');
   function checkFinishedChapters() {
     const buttons = document.querySelectorAll('.chapter-button');
     buttons.forEach(btn => {
-      // Logic Fix: Normalizing the path check
-      const path = new URL(btn.href).pathname;
+      // Logic Fix: Ensure consistent comparison by removing trailing slashes
+      const url = new URL(btn.href);
+      const path = url.pathname.replace(/\/$/, "");
       if (localStorage.getItem('finished-' + path)) {
         btn.classList.add('finished');
       } else {
@@ -193,7 +194,6 @@ const enChapters = processChapters('en');
 </style>
 
 <style>
-  /* CHECKMARK FIX */
   .chapter-button.finished::after { 
     content: '✓'; 
     margin-left: auto; 
@@ -202,7 +202,6 @@ const enChapters = processChapters('en');
     padding-left: 10px;
     font-size: 1.2rem;
   }
-
   .chapter-button.finished { border-color: rgba(46, 204, 113, 0.5); }
 
   .bg-layer {
