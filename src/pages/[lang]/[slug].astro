@@ -100,28 +100,29 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  // PROGRESS BAR & FINISHED LOGIC
   function updateScroll() {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (height <= 0) return;
     const scrolled = (winScroll / height) * 100;
     const bar = document.getElementById("myBar");
     if(bar) bar.style.width = scrolled + "%";
 
-    // Mark as finished if scroll is > 95%
     if (scrolled > 95) {
       localStorage.setItem('finished-' + window.location.pathname, 'true');
     }
   }
 
-  // RE-INIT FUNCTIONS FOR ASTRO TRANSITIONS
   function initReader() {
     const num = document.getElementById('raw-num')?.innerText || "";
     const mainTitle = document.getElementById('raw-title')?.innerText || "";
-    localStorage.setItem('last-read-path', window.location.pathname);
-    localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
+    
+    // PERSISTENCE FIX: Save immediately on load
+    if (num && mainTitle) {
+      localStorage.setItem('last-read-path', window.location.pathname);
+      localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
+    }
 
-    // Re-set theme and font size
     setTheme(localStorage.getItem('novel-theme') || 'light');
     
     let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
@@ -153,11 +154,9 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     localStorage.setItem('novel-font-size', currentSize);
   }
 
-  // Astro Page Load handling
-  document.addEventListener('astro:page-load', initReader);
-
-  // Sticky header observer logic...
   document.addEventListener('astro:page-load', () => {
+    initReader();
+    
     const stickyHeader = document.getElementById('sticky-header');
     const mainHeader = document.getElementById('main-header');
     if (stickyHeader && mainHeader) {
@@ -173,7 +172,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </script>
 
 <style is:global>
-  /* Variables match Index.astro */
   :root, [data-theme="light"] {
     --bg-color: #ffffff; --text-color: #222222; --meta-color: #666666;
     --nav-bg: rgba(255, 255, 255, 0.95); --border-color: #dddddd;
@@ -195,7 +193,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 <style>
   .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 2202; background: transparent; }
   .progress-bar { height: 4px; background: var(--accent); width: 0%; transition: width 0.1s ease-out; }
-
   .sticky-header {
     position: fixed; top: 0; left: 0; width: 100%; height: 60px;
     background: var(--sticky-bg); border-bottom: 1px solid var(--border-color);
@@ -207,7 +204,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .sticky-text { font-family: 'Georgia', serif; font-size: 1rem; }
   .sticky-num { font-weight: bold; opacity: 0.7; margin-right: 10px; text-transform: uppercase; font-size: 0.8rem; }
   .sticky-divider { margin-right: 10px; opacity: 0.3; }
-
   .chapter-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 150px 1.5rem; font-family: 'Georgia', serif; }
   .chapter-header { text-align: center; margin-bottom: 3rem; }
   .chapter-number { color: var(--meta-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
@@ -215,7 +211,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .separator { border: 0; border-top: 1px solid var(--border-color); width: 100px; margin: 2rem auto; }
   .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
   .chapter-text :global(p) { margin-bottom: 1.5em; text-align: justify; }
-
   .nav-buttons {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
     background: var(--nav-bg); backdrop-filter: blur(15px);
@@ -223,7 +218,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     display: flex; align-items: center; gap: 15px; z-index: 1000;
   }
-
   .theme-drawer-container { position: relative; display: flex; align-items: center; }
   .theme-toggle-btn { border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); padding: 0 10px; font-size: 1.1rem; cursor: pointer; background: transparent; color: var(--text-color); }
   .theme-options {
@@ -234,10 +228,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   }
   .theme-drawer-container.active .theme-options { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
   .theme-btn { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 1px solid rgba(0,0,0,0.2); padding: 0; }
-  .theme-btn.light { background: #ffffff !important; }
-  .theme-btn.sepia { background: #f4ecd8 !important; }
-  .theme-btn.dark { background: #333333 !important; }
-
   .zoom-controls { display: flex; gap: 8px; border-right: 1px solid var(--border-color); padding-right: 10px; }
   .btn { background: transparent; border: none; color: var(--text-color); cursor: pointer; font-family: sans-serif; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; }
   .icon-btn { font-size: 1.3rem; }
