@@ -112,34 +112,20 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  function updateScroll() {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    if (height <= 0) return;
-    const scrolled = (winScroll / height) * 100;
-    const bar = document.getElementById("myBar");
-    if(bar) bar.style.width = scrolled + "%";
-
-    if (scrolled > 95) {
-      // Logic Fix: Ensure consistent path naming
-      const path = window.location.pathname.replace(/\/$/, "");
-      localStorage.setItem('finished-' + path, 'true');
-    }
-  }
-
-  function setTheme(theme) {
+  // 1. Make functions global so 'onclick' can always find them
+  window.setTheme = function(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('novel-theme', theme);
     const drawer = document.getElementById('theme-drawer');
-    if(drawer) drawer.classList.remove('active');
-  }
+    if (drawer) drawer.classList.remove('active');
+  };
 
-  function toggleThemeDrawer() {
+  window.toggleThemeDrawer = function() {
     const drawer = document.getElementById('theme-drawer');
-    if(drawer) drawer.classList.toggle('active');
-  }
+    if (drawer) drawer.classList.toggle('active');
+  };
 
-  function adjustFontSize(change) {
+  window.adjustFontSize = function(change) {
     let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
     currentSize += change;
     if (currentSize < 0.8) currentSize = 0.8;
@@ -147,6 +133,21 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     const content = document.getElementById('novel-content');
     if (content) content.style.fontSize = `${currentSize}rem`;
     localStorage.setItem('novel-font-size', currentSize);
+  };
+
+  // 2. Local logic for scroll and progress
+  function updateScroll() {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (height <= 0) return;
+    const scrolled = (winScroll / height) * 100;
+    const bar = document.getElementById("myBar");
+    if (bar) bar.style.width = scrolled + "%";
+
+    if (scrolled > 95) {
+      const path = window.location.pathname.replace(/\/$/, "");
+      localStorage.setItem('finished-' + path, 'true');
+    }
   }
 
   function initReader() {
@@ -158,7 +159,9 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
     }
 
-    setTheme(localStorage.getItem('novel-theme') || 'light');
+    // Apply saved preferences
+    const savedTheme = localStorage.getItem('novel-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
     
     let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
     const content = document.getElementById('novel-content');
@@ -167,6 +170,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     window.addEventListener('scroll', updateScroll);
   }
 
+  // 3. Trigger on every Astro page load
   document.addEventListener('astro:page-load', () => {
     initReader();
     
@@ -183,6 +187,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     }
   });
 
+  // Close drawer when clicking outside
   document.addEventListener('click', (e) => {
     const drawer = document.getElementById('theme-drawer');
     if (drawer && !drawer.contains(e.target)) drawer.classList.remove('active');
