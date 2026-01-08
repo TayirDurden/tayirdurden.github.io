@@ -1,77 +1,102 @@
 ---
-title: "Anomaly"
+title: "Anomali"
 
 chapter_number: 2
-lang: "en"
-
-slug: "chapter-2"
+lang: "tr"
 
 ---
 
-The system offered him sleep..
+Sistem ona uyumayı önerdi.
 
- Taylor declined it.
- He lay in the dark of his apartment—darkness was optional, but he kept it that way—listening
- to the near-silence of a building that never truly rested. Somewhere, something hummed. It
- always did. The sound had once comforted him. Tonight, it felt like breathing.
- He replayed the moment again and again: the resistance, the pause, the way the interface had
- hesitated as if weighing him. Observers weren’t supposed to leave marks. They were meant to
- pass through data like light through glass.
- By morning, the city was perfect again.
- The atrium bloomed on schedule. Screens smiled. The log feeds behaved. Whatever he’d seen
- had been smoothed away so thoroughly that Taylor almost convinced himself he’d imagined
- it.
- Almost.
- On his commute—an indulgent word for a moving walkway that anticipated your
- destination—he noticed a woman walking against the flow.
- People didn’t do that.
- Not because they weren’t allowed. Because the system made it unnecessary. Paths optimized
- themselves. To move against them required intent.
- She was unremarkable in the ways that mattered. No dramatic scars, no theatrical defiance.
- Just a woman in a neutral coat, hair pulled back without care, eyes forward. Yet the space
- around her felt wrong, like a skipped frame in a flawless video.
- Taylor felt the system register her before he did.
- Not with alarms. With quiet adjustments. The walkway slowed by a fraction. Nearby screens
- dimmed imperceptibly. People unconsciously shifted to give her room.
- She glanced at him.
- It lasted half a second. Long enough.
- Her eyes didn’t ask questions. They measured.
- Taylor looked away too late.
- A soft chime sounded in his ear.
- \\\\ ROUTE ADJUSTED.
- He frowned. The walkway nudged him toward an alternate corridor—longer, emptier, less
- scenic. He hesitated, then stepped off entirely. The system paused, recalculated, then flowed
- on without him.
- He shouldn’t have followed her.
- He told himself he wasn’t following. That he was curious. That curiosity was harmless. But
- when she turned into the service corridor that no one used unless they had to, Taylor turned
- with her.
- The corridor smelled faintly of metal and ozone. The walls were unfinished here, honest in a
- way the city above never was. His pulse ticked in his throat.
- She stopped without warning.
- “So,” she said, without turning, “how long have you been watching things you’re not meant to
- see?”
- Taylor froze.
- “I—”
- She turned then. Up close, she looked tired. Not sleepy. Worn. As if she carried weight the
- system couldn’t redistribute.
- “That wasn’t a rhetorical question,” she said. “And this is where you decide something.”
- “Decide what?”
- “Whether you’re dangerous,” she said calmly, “or just loud.”
- The corridor lights dimmed a notch.
- Taylor swallowed. “I don’t know what you think I saw.”
- A corner of her mouth twitched. Not a smile.
- “That’s the wrong answer,” she said. “But it’s the honest one.”
- Footsteps echoed at the far end of the corridor. Too measured. Too synchronized.
- She stepped closer to him, lowering her voice. “If you want to keep breathing quietly,” she
- said, “you’re going to walk away right now and forget this ever happened.”
- “And if I don’t?”
- Her eyes flicked past him, then back.
- “Then you follow me,” she said. “And you don’t ask questions you’re not ready to survive.”
- The footsteps drew nearer.
- For the first time in years, Taylor didn’t feel bored.
- He nodded.
- She turned and moved, swift and certain, slipping through a maintenance hatch just as the
- corridor lights flared back to full brightness.
- Taylor followed.
- Behind them, the system rerouted the air.
+Taylor reddetti.
+
+Dairesinin karanlığında uzanmıştı—karanlık opsiyoneldi ama o böyle tutuyordu—hiç tam olarak dinlenmeyen bir binanın neredeyse sessizliğini dinliyordu. Bir yerlerde bir şey vızıldıyordu. Hep öyle olurdu. Ses bir zamanlar onu rahatlatırdı. Bu gece, nefes alıyor gibi hissettiriyordu.
+
+O anı tekrar tekrar oynatıyordu: direniş, duraklama, arayüzün onu tartarcasına tereddüt etme şekli. Gözlemcilerin iz bırakması gerekmiyordu. Işığın camdan geçmesi gibi veriden geçmeleri gerekiyordu.
+
+Sabah olduğunda şehir yeniden mükemmeldi.
+
+Atriyum vaktinde çiçek açtı. Ekranlar gülümsedi. Kayıt akışları sorunsuzdu. Gördüğü her neydiyse o kadar titizlikle düzeltilmişti ki, Taylor neredeyse her şeyi hayal ettiğine kendini ikna ediyordu.
+
+Neredeyse.
+
+İşe gidiş yolunda—varış noktasını tahmin eden hareketli bir yürüyüş yolu için abartılı bir söz—akışa karşı yürüyen bir kadın fark etti.
+
+İnsanlar bunu yapmazdı.
+
+Yasak olduğu için değil. Sistem bunu gereksiz kıldığı için. Yollar kendilerini optimize ediyordu. Onlara karşı hareket etmek niyet gerektiriyordu.
+
+Önemli olan açılardan sıradan bir kadındı. Dramatik yaraları veya teatral bir isyanı yoktu.
+
+Nötr bir paltolu, dikkatsizce toplanmış saçlı, gözleri ileriye bakan bir kadın sadece. Yine de etrafındaki alan yanlış hissettiriyordu, kusursuz bir videoda atlanan kare gibi.
+
+Taylor, Sistem'in kadını kendinden önce fark ettiğini hissetti.
+
+Alarmlarla değil. Sessiz ayarlamalarla. Yürüyüş yolu çok az yavaşladı. Yakındaki ekranlar fark edilmeyecek kadar kararırken insanlar bilinçsizce kadına yer açmak için kaydı.
+
+Kadın ona şöyle bir baktı.
+
+Yarım saniye sürdü. Yeterince uzun.
+
+Gözleri soru sormuyordu. Ölçüyordu.
+
+Taylor bakışlarını başka yöne çevirmek için çok geç kalmıştı.
+
+Kulağında yumuşak bir çınlama sesi çaldı.
+
+\\\\ ROTA AYARLANDI.
+
+Kaşlarını çattı. Yürüyüş yolu onu alternatif bir koridora—daha uzun, daha boş, daha az manzaralı—doğru itiyordu. Tereddüt etti, sonra tamamen indi. Sistem duraksadı, yeniden hesapladı, sonra onsuz akıp gitti.
+
+Kadını takip etmemeliydi.
+
+Kendine takip etmediğini söyledi. Sadece meraklı olduğunu. Merakın zararsız olduğunu. Ama kadın kimsenin mecbur kalmadıkça kullanmadığı servis koridoruna döndüğünde, Taylor da onunla döndü.
+
+Koridor hafifçe metal ve ozon kokuyordu. Duvarlar burada çıplaktı, yukarıdaki şehrin asla olmadığı şekilde dürüsttü. Nabzı boğazında atıyordu.
+
+Kadın uyarı vermeden durdu.
+
+"Ee," dedi, dönmeden, "ne zamandır görmen gerekmeyen şeyleri izliyorsun?"
+
+Taylor dondu.
+
+"Ben—"
+
+Kadın o an döndü. Yakından yorgun görünüyordu. Uykulu değil. Yıpranmış. Sistem'in yeniden dağıtamayacağı bir ağırlık taşıyor gibiydi.
+
+"Bu retorik bir soru değildi," dedi. "Ve burası bir şeye karar vereceğin yer."
+
+"Ne kararı?"
+
+"Tehlikeli misin," dedi sakince, "yoksa sadece gürültülü müsün."
+
+Koridor ışıkları bir kademe karardı.
+
+Taylor yutkundu. "Ne gördüğümü düşündüğünü bilmiyorum."
+
+Kadının ağzının bir köşesi seğirdi. Gülümseme değildi.
+
+"Yanlış," dedi. "Ama dürüst bir cevap."
+
+Koridorun uzak ucunda ayak sesleri yankılandı. Çok ölçülü. Çok senkronize.
+
+Kadın ona yaklaştı, sesini alçaltarak. "Sessizce nefes almaya devam etmek istiyorsan," dedi, "şimdi yürüyüp gideceksin ve bu olanları unutacaksın."
+
+"Ya yapmazsam?"
+
+Gözleri Taylor'ın arkasına kaydı, sonra geri döndü.
+
+"O zaman beni takip edersin," dedi. "Ve üstesinden gelmeye hazır olmadığın sorular sormazsın."
+
+Ayak sesleri yaklaştı.
+
+Taylor yıllar sonra ilk defa can sıkıntısı hissetmiyordu.
+
+Başıyla onayladı.
+
+Kadın döndü, hızlı ve kararlı bir şekilde hareket etti, koridor ışıkları tam parlaklığa geri dönerken bir bakım kapağından kayarak geçti.
+
+Taylor takip etti.
+
+Arkalarında, Sistem havayı yeniden yönlendirdi.
+

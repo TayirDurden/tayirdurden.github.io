@@ -1,87 +1,106 @@
 ---
-title: "The Bug"
+title: "Hata"
 
 chapter_number: 1
-lang: "en"
-
-slug: "chapter-1"
+lang: "tr"
 
 ---
 
-Perfection was boring..
+Mükemmellik sıkıcıydı.
 
- Taylor had known this long before he had words for it. In a world where hunger was a myth
- told to children, where illness was a chapter in history books, and where work existed only as
- a form of personal expression, boredom had become the last socially acceptable discomfort.
- The city reflected that perfection with embarrassing enthusiasm. Buildings curved softly
- toward the sky as if competing to be least offensive to the eye. Streets cleaned themselves.
- Screens adjusted their brightness to match your mood. Every problem had been solved so long
- ago that people had forgotten problems were ever a thing.
- Taylor was a systems observer—an occupation so light it barely qualified as labor. He
- monitored abstract flows: energy usage trends, social satisfaction metrics, error logs that
- almost never populated. His job wasn’t to fix anything; it was to confirm that nothing needed
- fixing.
- Most days, nothing did.
- He sat alone in a public atrium, watching artificial sunlight drift across a garden that had
- never known dirt. People passed him in ones and twos, smiling softly, their lives complete in
- ways that left no room for friction. They had lovers, hobbies, passions carefully curated by a
- system that knew them better than they knew themselves.
- Taylor had none of that. Not because he was denied it—denial didn’t exist anymore—but
- because nothing ever stuck.
- It wasn’t sadness, exactly. Sadness implied loss, and he had never lost anything. It was a
- quieter erosion, a sense that every experience slid off him before it could leave a mark.
- Conversations looped. Faces blurred. Even memories arrived pre-softened, as if the system
- had compressed them for storage efficiency.
- Sometimes he wondered whether loneliness still counted as loneliness if it caused no pain. If
- it was simply the absence of signal rather than the presence of noise.
- He had tried to rebel in the ways that were allowed. Randomized hobbies. Unscheduled
- walks. Manual food preparation, once, just to feel the inefficiency of it. Nothing worked.
- Every attempt at friction was absorbed, neutralized, improved upon.
- The system did not punish deviation.
- It perfected it. Relationships dissolved politely. Interests flared and died. He felt like a
- background process running without purpose, consuming resources simply because it could.
- The first bug appeared at 14:03.
- It was nothing dramatic. No alarms, no red banners tearing across his interface. Just a single
- line in the system log that didn’t resolve itself.
- \\\\ SOURCE UNVERIFIED. ORIGIN: NULL.
- Taylor frowned. Origins were never null. Everything had a traceable lineage—every particle,
- every decision, every fluctuation in the system’s vast, invisible machinery. A null origin
- wasn’t just an error; it was a contradiction.
- He refreshed the feed. The line remained.
- Normally, unresolved anomalies corrected themselves within milliseconds. This one didn’t.
- Instead, a second line appeared beneath it.
- \\\\ RESOURCE FLOW DIVERTED. DEPTH CLASSIFICATION: BELOW.
- “Below?” he muttered.
- There was no such classification.
- Taylor hesitated. Observers weren’t encouraged to dig. Curiosity wasn’t illegal, but it was
- inefficient—and inefficiency was the closest thing this world had to sin. Still, boredom
- pressed heavier than caution. He opened the trace.
- The interface resisted.
- That alone made his pulse quicken.
- He bypassed the first restriction with a credential he’d never needed before. The second
- bypass requested justification. He typed the first thing that came to mind.
- \\\\ Routine verification.
- The system paused. Then it opened.
- What he saw didn’t make sense.
- The city’s immaculate energy grid folded inward, descending instead of spreading outward.
- Vast quantities of power were being funneled not into homes, not into infrastructure, but
- down—deep below the surface. Deeper than transit tunnels. Deeper than maintenance layers.
- Deeper than anything marked on public schematics.
- Taylor leaned back, heart thudding.
- The world above ground was powered by abundance. The world below, apparently, by
- necessity.
- That was when the warning appeared.
- \\\\ ACCESS FLAGGED.
- The interface dimmed, and Taylor felt a sudden, irrational certainty that he was being
- watched—not by people, but by the system itself. Like an immune response waking up.
- He closed the trace.
- The logs returned to normal. The null-origin entry vanished as if it had never existed.
- Around him, the atrium remained serene. People laughed softly. The artificial sun warmed the
- leaves just enough to feel real.
- Taylor stood up.
- For the first time in years, something inside him felt awake.
- He didn’t know yet that this was the moment he’d stepped off the surface of the world.
- He only knew that something beneath the perfection had shifted—and that it had noticed him.
- The system had glitched.
- And for the first time in his life, Taylor felt certain that the world was hiding something from
- him.
+Taylor, buna bir kelime bulamadığı zamanlardan beri bunu biliyordu. Açlığın çocuklara anlatılan bir masal olduğu, hastalığın tarih kitaplarında bir bölüm olarak kaldığı ve mesleklerin yalnızca kişisel bir ifade biçimi olarak var olduğu bir dünyada, can sıkıntısı sosyal olarak kabul edilebilir tek rahatsızlık haline gelmişti.
+
+Şehir bu mükemmelliği utanç verici bir coşkuyla yansıtıyordu. Binalar, göze en az rahatsızlık verecek şekilde, sanki birbirleriyle yarışır gibi yumuşak kıvrımlarla göğe doğru yükseliyordu. Sokaklar kendilerini temizliyordu.
+
+Ekranlar parlaklıklarını ruh haline göre ayarlıyordu. Her sorun o kadar uzun zaman önce çözülmüştü ki insanlar sorunların bir zamanlar var olduğunu unutmuştu.
+
+Taylor bir sistem gözlemcisiydi—öylesine hafif bir meslek ki emek olarak bile sayılmaya zor yetiyordu. Soyut akışları izliyordu: enerji kullanım eğilimleri, sosyal memnuniyet metrikleri, neredeyse hiç dolmayan hata kayıtları. İşi bir şeyi düzeltmek değildi; hiçbir şeyin düzeltmeye ihtiyacı olmadığını doğrulamaktı.
+
+Çoğu gün, öyle de oluyordu.
+
+Herkese açık bir atriyumda tek başına oturmuş, hiç toprak görmemiş bir bahçenin üzerinden kayarak geçen yapay güneş ışığını izliyordu. İnsanlar birer ikişer yanından geçiyor, yumuşakça gülümsüyorlardı. Hayatları öylesine tamamlanmış bir haldeydi ki sürtüşmeye yer bırakmıyordu. Sevgilileri, hobileri, kendilerini kendilerinden daha iyi tanıyan bir sistem tarafından özenle seçilmiş tutkuları vardı.
+
+Taylor'da bunların hiçbiri yoktu. Reddedildiği için değil—reddetme diye bir şey artık yoktu—sadece hiçbir şey kalıcı olmuyordu.
+
+Tam olarak üzüntü de değildi bu. Üzüntü kayıp anlamına gelirdi ve o hiçbir şeyi kaybetmemişti. Daha sessiz bir aşınmaydı bu, her deneyimin iz bırakmadan üzerinden kayıp gittiği hissi.
+
+Konuşmalar döngü halindeydi. Yüzler bulanıktı. Hatıralar bile yumuşatılmış halde geliyordu sanki, Sistem onları depolama verimliliği için sıkıştırmış gibiydi.
+
+Bazen merak ediyordu: eğer acı vermiyorsa, yalnızlık hâlâ yalnızlık sayılır mıydı? Yoksa gürültünün varlığından ziyade sadece işaretin yokluğu muydu?
+
+İzin verilen şekillerde isyan etmeyi denemişti. Rastgele hobilere yönelmiş, programsız yürüyüşler yapmış, bir keresinde verimsizliğini hissetmek için elle yemek hazırlamıştı. Hiçbiri işe yaramamıştı.
+
+Sürtüşme yaratma girişimleri emilmiş, nötralize edilmiş, geliştirilmişti.
+
+Sistem sapmaları cezalandırmıyordu. Onları mükemmelleştiriyordu. 
+
+İlişkiler kibarca dağılıyordu. İlgi alanları alevlenip sönüyordu. Amacı olmadan çalışan bir arka plan işlemi gibi hissediyordu kendini, kaynakları sadece yapabildiği için tüketiyordu.
+
+İlk hata 14:03'te ortaya çıktı.
+
+Dramatik bir şey değildi. Alarm yok, arayüzünü yırtan kırmızı başlıklar yok. Sistem kaydında kendiliğinden çözülmeyen tek bir satır sadece.
+
+\\\\ KAYNAK DOĞRULANAMADI. KÖKEN: NULL.
+
+Taylor kaşlarını çattı. Kaynaklar asla boş olmazdı. Her şeyin izlenebilir bir soy ağacı vardı—her parçacığın, her kararın, Sistem'in uçsuz bucaksız, görünmez mekanizmasındaki her dalgalanmanın. Boş bir kaynak sadece bir hata değildi; bir çelişkiydi.
+
+Akışı yeniledi. Satır duruyordu.
+
+Normalde, çözülmemiş anomaliler milisaniyeler içinde kendilerini düzeltirdi. Bu düzelmedi.
+
+Onun yerine, altında ikinci bir satır belirdi.
+
+\\\\ KAYNAK AKIŞI SAPTIRILDI. DERİNLİK SINIFLANDIRMASI: AŞAĞI.
+
+"Aşağı mı?" diye mırıldandı.
+
+Öyle bir sınıflandırma yoktu.
+
+Taylor tereddüt etti. Gözlemcilerin anomaliyi eşelemesi teşvik edilmezdi. Merak yasak değildi ama verimsizdi—ve verimsizlik bu dünyada günaha en yakın şeydi. Yine de can sıkıntısı, tedbirden daha ağır basıyordu. İzlemeyi açtı.
+
+Arayüz direndi.
+
+Yalnızca bu bile Taylor'ın nabzını hızlandırmaya yetti.
+
+Daha önce hiç ihtiyaç duymadığı bir kimlik bilgisiyle ilk kısıtlamayı aştı. İkinci aşma gerekçe istedi. Aklına gelen ilk şeyi yazdı.
+
+\\\\ Rutin doğrulama.
+
+Sistem duraksadı. Sonra açıldı.
+
+Gördüğü şey mantıklı değildi.
+
+Şehrin kusursuz enerji şebekesi içe doğru katlanıyordu, dışa yayılmak yerine aşağı iniyordu.
+
+Muazzam miktarda güç evlere, altyapıya değil, aşağıya—yüzeyin derinliklerine pompalanıyordu. Toplu taşıma tünellerinden daha derine. Bakım katmanlarından daha derine.
+
+Halka açık şemada işaretlenmiş herhangi bir şeyden daha derine.
+
+Taylor arkasına yaslandı, kalbi gümbürdüyordu.
+
+Yeryüzündeki dünya bollukla çalışıyordu. Aşağıdaki dünya, görünüşe göre, zorunlulukla.
+
+İşte o zaman uyarı belirdi.
+
+\\\\ ERİŞİM İŞARETLENDİ.
+
+Arayüz kararırken Taylor, izlendiğine dair ani, mantık dışı bir kesinlik hissetti—insanlar tarafından değil, Sistem'in kendisi tarafından. Uyanmakta olan bir bağışıklık tepkisi gibi.
+
+Kaydı kapattı.
+
+Kayıtlar normale döndü. Boş kaynaklı giriş sanki hiç var olmamış gibi kayboldu.
+
+Çevresinde, atriyum dingin duruyordu. İnsanlar yumuşakça gülüyordu. Yapay güneş, yaprakları gerçek hissettirmeye yetecek kadar ısıtıyordu.
+
+Taylor ayağa kalktı.
+
+Yıllar sonra ilk defa içindeki bir şey uyanık hissediyordu.
+
+O anın dünyanın yüzeyinden dışarı adım attığı ilk an olduğunu henüz bilmiyordu.
+
+Sadece mükemmelliğin altındaki bir şeyin kaydığını—ve kendisinin farkına vardığını biliyordu.
+
+Sistem hata yapmıştı.
+
+Taylor, hayatında ilk kez dünyanın kendisinden bir şeyler sakladığından emindi.
+
