@@ -69,41 +69,41 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 
     <nav class="nav-buttons">
       {prevSlug ? (
-        <a href={`/${lang}/${prevSlug}`} class="btn icon-btn" title="Previous">
+        <a href={`/${lang}/${prevSlug}`} class="nav-btn-link" title="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </a>
       ) : (
-        <span class="btn icon-btn disabled">
+        <span class="nav-btn-link disabled">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </span>
       )}
 
-      <div class="theme-drawer-container section-divider" id="theme-drawer">
-        <button class="btn theme-toggle-btn" id="theme-master-btn" title="Appearance">
+      <div class="nav-section-divider" id="theme-drawer-wrapper">
+        <button class="nav-action-btn" id="theme-trigger">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
-        <div class="theme-options">
-          <button class="theme-btn light" data-theme-set="light"></button>
-          <button class="theme-btn sepia" data-theme-set="sepia"></button>
-          <button class="theme-btn dark" data-theme-set="dark"></button>
+        <div class="theme-menu-box" id="theme-menu">
+          <button class="color-dot light" data-set-t="light"></button>
+          <button class="color-dot sepia" data-set-t="sepia"></button>
+          <button class="color-dot dark" data-set-t="dark"></button>
         </div>
       </div>
 
-      <div class="zoom-controls section-divider">
-        <button class="btn zoom-btn" id="zoom-out">A-</button>
-        <button class="btn zoom-btn" id="zoom-in">A+</button>
+      <div class="nav-section-divider zoom-wrapper">
+        <button class="zoom-text-btn" id="z-out">A-</button>
+        <button class="zoom-text-btn" id="z-in">A+</button>
       </div>
 
-      <a href="/" class="btn home section-divider" title="Library">
+      <a href="/" class="nav-btn-link nav-section-divider" title="Home">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </a>
 
       {nextSlug ? (
-        <a href={`/${lang}/${nextSlug}`} class="btn icon-btn section-divider" title="Next">
+        <a href={`/${lang}/${nextSlug}`} class="nav-btn-link nav-section-divider" title="Next">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
       ) : (
-        <span class="btn icon-btn disabled section-divider">
+        <span class="nav-btn-link disabled nav-section-divider">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </span>
       )}
@@ -112,49 +112,50 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  function initReaderLogic() {
-    const masterBtn = document.getElementById('theme-master-btn');
-    const drawer = document.getElementById('theme-drawer');
-    const themeButtons = document.querySelectorAll('[data-theme-set]');
-    const zoomIn = document.getElementById('zoom-in');
-    const zoomOut = document.getElementById('zoom-out');
-    const content = document.getElementById('novel-content');
+  function runNovelScripts() {
+    // 1. Theme Logic
+    const trigger = document.getElementById('theme-trigger');
+    const menu = document.getElementById('theme-menu');
+    const dots = document.querySelectorAll('[data-set-t]');
 
-    // Attach Theme Toggle
-    if (masterBtn && drawer) {
-      masterBtn.addEventListener('click', (e) => {
+    if (trigger && menu) {
+      trigger.onclick = (e) => {
         e.stopPropagation();
-        drawer.classList.toggle('active');
-      });
+        menu.classList.toggle('open');
+      };
     }
 
-    // Attach Theme Switches
-    themeButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const theme = btn.getAttribute('data-theme-set');
+    dots.forEach(dot => {
+      dot.onclick = () => {
+        const theme = dot.getAttribute('data-set-t');
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('novel-theme', theme);
-        drawer?.classList.remove('active');
-      });
+        menu?.classList.remove('open');
+      };
     });
 
-    // Attach Zoom
-    const updateSize = (change) => {
-      let current = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-      current = Math.max(0.8, Math.min(2.5, current + change));
-      if (content) content.style.fontSize = current + "rem";
-      localStorage.setItem('novel-font-size', current);
+    // 2. Zoom Logic
+    const zIn = document.getElementById('z-in');
+    const zOut = document.getElementById('z-out');
+    const content = document.getElementById('novel-content');
+
+    const changeSize = (amt) => {
+      let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
+      cur = Math.max(0.8, Math.min(2.5, cur + amt));
+      if (content) content.style.fontSize = cur + "rem";
+      localStorage.setItem('novel-font-size', cur);
     };
-    zoomIn?.addEventListener('click', () => updateSize(0.1));
-    zoomOut?.addEventListener('click', () => updateSize(-0.1));
 
-    // Initial Load from Storage
-    const savedTheme = localStorage.getItem('novel-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    const savedSize = localStorage.getItem('novel-font-size') || 1.2;
-    if (content) content.style.fontSize = savedSize + "rem";
+    if (zIn) zIn.onclick = () => changeSize(0.1);
+    if (zOut) zOut.onclick = () => changeSize(-0.1);
 
-    // Progress
+    // 3. Initial Load
+    const savedT = localStorage.getItem('novel-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedT);
+    const savedS = localStorage.getItem('novel-font-size') || 1.2;
+    if (content) content.style.fontSize = savedS + "rem";
+
+    // 4. Progress Tracking
     const num = document.getElementById('raw-num')?.innerText || "";
     const title = document.getElementById('raw-title')?.innerText || "";
     if (num && title) {
@@ -163,40 +164,40 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     }
   }
 
-  function updateScroll() {
-    const winScroll = document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    if (height <= 0) return;
-    const scrolled = (winScroll / height) * 100;
+  function handleScroll() {
+    const win = document.documentElement.scrollTop;
+    const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (total <= 0) return;
+    const pct = (win / total) * 100;
     const bar = document.getElementById("myBar");
-    if (bar) bar.style.width = scrolled + "%";
-    if (scrolled > 95) {
+    if (bar) bar.style.width = pct + "%";
+
+    if (pct > 95) {
       const path = window.location.pathname.replace(/\/$/, "");
       localStorage.setItem('finished-' + path, 'true');
     }
   }
 
   document.addEventListener('astro:page-load', () => {
-    initReaderLogic();
-    window.addEventListener('scroll', updateScroll);
-    
-    // Sticky Header Logic
-    const stickyHeader = document.getElementById('sticky-header');
-    const mainHeader = document.getElementById('main-header');
-    if (stickyHeader && mainHeader) {
+    runNovelScripts();
+    window.addEventListener('scroll', handleScroll);
+
+    const sticky = document.getElementById('sticky-header');
+    const main = document.getElementById('main-header');
+    if (sticky && main) {
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) stickyHeader.classList.add('visible');
-          else stickyHeader.classList.remove('visible');
+        entries.forEach(e => {
+          if (!e.isIntersecting) sticky.classList.add('visible');
+          else sticky.classList.remove('visible');
         });
       }, { threshold: 0 });
-      observer.observe(mainHeader);
+      observer.observe(main);
     }
   });
 
   document.addEventListener('click', (e) => {
-    const drawer = document.getElementById('theme-drawer');
-    if (drawer && !drawer.contains(e.target)) drawer.classList.remove('active');
+    const menu = document.getElementById('theme-menu');
+    if (menu && !menu.contains(e.target)) menu.classList.remove('open');
   });
 </script>
 
@@ -233,6 +234,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .sticky-text { font-family: 'Georgia', serif; font-size: 1rem; }
   .sticky-num { font-weight: bold; opacity: 0.7; margin-right: 10px; text-transform: uppercase; font-size: 0.8rem; }
   .sticky-divider { margin-right: 10px; opacity: 0.3; }
+  
   .chapter-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 150px 1.5rem; font-family: 'Georgia', serif; }
   .chapter-header { text-align: center; margin-bottom: 3rem; }
   .chapter-number { color: var(--meta-color); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
@@ -240,6 +242,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .separator { border: 0; border-top: 1px solid var(--border-color); width: 100px; margin: 2rem auto; }
   .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
   .chapter-text :global(p) { margin-bottom: 1.5em; text-align: justify; }
+
   .nav-buttons {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
     background: var(--nav-bg); backdrop-filter: blur(15px);
@@ -248,25 +251,27 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     display: flex; align-items: center; justify-content: center; z-index: 1000;
     overflow: hidden; padding: 0 5px;
   }
-  .btn, .theme-drawer-container, .zoom-controls { display: inline-flex; align-items: center; justify-content: center; height: 100%; }
-  .section-divider { border-left: 1px solid var(--border-color) !important; }
-  .btn.icon-btn, .btn.home, .theme-toggle-btn { width: 50px; cursor: pointer; background: transparent; border: none; }
-  .btn svg { stroke: var(--text-color); transition: transform 0.2s; }
-  .btn:hover svg { transform: scale(1.15); }
-  .btn.disabled { opacity: 0.2; pointer-events: none; }
-  .theme-drawer-container { position: relative; }
-  .theme-options {
+  .nav-btn-link, #theme-drawer-wrapper, .zoom-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 100%; }
+  .nav-section-divider { border-left: 1px solid var(--border-color) !important; }
+  
+  .nav-btn-link, .nav-action-btn { width: 50px; background: transparent; border: none; cursor: pointer; text-decoration: none; color: inherit; }
+  .nav-btn-link svg, .nav-action-btn svg { stroke: var(--text-color); }
+  .nav-btn-link.disabled { opacity: 0.2; pointer-events: none; }
+
+  #theme-drawer-wrapper { position: relative; }
+  .theme-menu-box {
     position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%) translateY(10px);
     background: var(--nav-bg); border: 1px solid var(--border-color);
     padding: 12px; border-radius: 20px; display: flex; gap: 12px;
     opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 1001; align-items: center;
+    align-items: center;
   }
-  .theme-drawer-container.active .theme-options { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  .theme-btn { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 1px solid rgba(0,0,0,0.2); flex-shrink: 0; }
-  .theme-btn.light { background-color: #ffffff !important; }
-  .theme-btn.sepia { background-color: #f4ecd8 !important; }
-  .theme-btn.dark { background-color: #333333 !important; }
-  .zoom-controls { padding: 0 12px; gap: 12px; }
-  .zoom-btn { font-family: sans-serif; font-weight: bold; font-size: 0.85rem; color: var(--text-color); }
+  .theme-menu-box.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .color-dot { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; padding: 0; }
+  .color-dot.light { background: #fff !important; }
+  .color-dot.sepia { background: #f4ecd8 !important; }
+  .color-dot.dark { background: #333 !important; }
+
+  .zoom-wrapper { padding: 0 12px; gap: 12px; }
+  .zoom-text-btn { background: transparent; border: none; font-family: sans-serif; font-weight: bold; font-size: 0.85rem; color: var(--text-color); cursor: pointer; }
 </style>
