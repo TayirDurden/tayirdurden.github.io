@@ -60,7 +60,7 @@ const enChapters = processChapters('en');
       <div class="tabs">
         <button id="tab-en" class="tab-btn active" onclick="switchTab('en')">English</button>
         <span class="tab-divider">/</span>
-        <button id="tab-tr" class="tab-btn" onclick="switchTab('tr')">Türkçe</button>
+        <button id="tab-tr" class="tab-btn" onclick="switchTab('tr')">Türkçe <small class="soon-label">(Soon)</small></button>
       </div>
     </header>
 
@@ -139,7 +139,8 @@ const enChapters = processChapters('en');
   function checkFinishedChapters() {
     const buttons = document.querySelectorAll('.chapter-button');
     buttons.forEach(btn => {
-      const path = btn.getAttribute('href');
+      // Logic Fix: Normalizing the path check
+      const path = new URL(btn.href).pathname;
       if (localStorage.getItem('finished-' + path)) {
         btn.classList.add('finished');
       } else {
@@ -164,7 +165,6 @@ const enChapters = processChapters('en');
 
   document.addEventListener('astro:page-load', () => {
     setTheme(localStorage.getItem('novel-theme') || 'light');
-    // DEFAULT LOGIC: Use 'en' as fallback if preferred-lang isn't set
     switchTab(localStorage.getItem('preferred-lang') || 'en');
     initResume();
     checkFinishedChapters();
@@ -193,8 +193,18 @@ const enChapters = processChapters('en');
 </style>
 
 <style>
-  .chapter-button.finished::after { content: '✓'; margin-left: auto; font-weight: bold; color: #2ecc71; padding-left: 10px; }
-  .chapter-button.finished { border-color: rgba(46, 204, 113, 0.3); }
+  /* CHECKMARK FIX */
+  .chapter-button.finished::after { 
+    content: '✓'; 
+    margin-left: auto; 
+    font-weight: bold; 
+    color: #2ecc71; 
+    padding-left: 10px;
+    font-size: 1.2rem;
+  }
+
+  .chapter-button.finished { border-color: rgba(46, 204, 113, 0.5); }
+
   .bg-layer {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background-image: url('/cover.png'); background-size: cover; background-position: center;
@@ -240,9 +250,12 @@ const enChapters = processChapters('en');
   .theme-btn.dark { background-color: #333333 !important; }
 
   .clear-history-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border-color); background: transparent; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; opacity: 0.6; transition: all 0.2s ease; margin-left: 4px; }
-  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-family: sans-serif; position: relative; z-index: 1; }
+  
+  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-family: sans-serif; position: relative; z-index: 1; align-items: baseline; }
   .tab-btn { background: none; border: none; color: var(--text-color); opacity: 0.6; cursor: pointer; font-weight: bold; }
   .tab-btn.active { opacity: 1; border-bottom: 2px solid var(--text-color); }
+  .soon-label { font-size: 0.65rem; opacity: 0.5; font-weight: normal; font-style: italic; margin-left: 2px; }
+
   .vertical-list { display: flex; flex-direction: column; gap: 10px; }
   .chapter-button { display: flex; align-items: center; padding: 12px 20px; text-decoration: none; color: var(--text-color); border: 1px solid var(--border-color); border-radius: 10px; background: rgba(0,0,0,0.02); transition: all 0.2s ease; }
   .chapter-button:hover { background: var(--card-bg); border-color: var(--accent); transform: translateX(5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
