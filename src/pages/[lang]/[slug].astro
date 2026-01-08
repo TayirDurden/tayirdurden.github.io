@@ -79,19 +79,19 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       )}
 
       <div class="theme-drawer-container section-divider" id="theme-drawer">
-        <button class="btn theme-toggle-btn" onclick="toggleThemeDrawer()" title="Appearance">
+        <button class="btn theme-toggle-btn" id="theme-master-btn" title="Appearance">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
         <div class="theme-options">
-          <button class="theme-btn light" onclick="setTheme('light')"></button>
-          <button class="theme-btn sepia" onclick="setTheme('sepia')"></button>
-          <button class="theme-btn dark" onclick="setTheme('dark')"></button>
+          <button class="theme-btn light" data-theme-set="light"></button>
+          <button class="theme-btn sepia" data-theme-set="sepia"></button>
+          <button class="theme-btn dark" data-theme-set="dark"></button>
         </div>
       </div>
 
       <div class="zoom-controls section-divider">
-        <button class="btn zoom-btn" onclick="adjustFontSize(-0.1)">A-</button>
-        <button class="btn zoom-btn" onclick="adjustFontSize(0.1)">A+</button>
+        <button class="btn zoom-btn" id="zoom-out">A-</button>
+        <button class="btn zoom-btn" id="zoom-in">A+</button>
       </div>
 
       <a href="/" class="btn home section-divider" title="Library">
@@ -112,30 +112,64 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  // 1. Make functions global so 'onclick' can always find them
-  window.setTheme = function(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('novel-theme', theme);
+  function initReaderLogic() {
+    // 1. Theme Logic
+    const masterBtn = document.getElementById('theme-master-btn');
     const drawer = document.getElementById('theme-drawer');
-    if (drawer) drawer.classList.remove('active');
-  };
+    const themeButtons = document.querySelectorAll('[data-theme-set]');
 
-  window.toggleThemeDrawer = function() {
-    const drawer = document.getElementById('theme-drawer');
-    if (drawer) drawer.classList.toggle('active');
-  };
+    if (masterBtn && drawer) {
+      // Clear existing listeners to prevent duplicates
+      const newMasterBtn = masterBtn.cloneNode(true);
+      masterBtn.parentNode.replaceChild(newMasterBtn, masterBtn);
+      
+      newMasterBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        drawer.classList.toggle('active');
+      });
+    }
 
-  window.adjustFontSize = function(change) {
-    let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-    currentSize += change;
-    if (currentSize < 0.8) currentSize = 0.8;
-    if (currentSize > 2.5) currentSize = 2.5;
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const theme = btn.getAttribute('data-theme-set');
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('novel-theme', theme);
+        drawer?.classList.remove('active');
+      });
+    });
+
+    // 2. Zoom Logic
+    const zoomIn = document.getElementById('zoom-in');
+    const zoomOut = document.getElementById('zoom-out');
     const content = document.getElementById('novel-content');
-    if (content) content.style.fontSize = `${currentSize}rem`;
-    localStorage.setItem('novel-font-size', currentSize);
-  };
 
-  // 2. Local logic for scroll and progress
+    const updateFontSize = (change) => {
+      let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
+      currentSize += change;
+      currentSize = Math.max(0.8, Math.min(2.5, currentSize));
+      if (content) content.style.fontSize = `${currentSize}rem`;
+      localStorage.setItem('novel-font-size', currentSize);
+    };
+
+    zoomIn?.addEventListener('click', () => updateFontSize(0.1));
+    zoomOut?.addEventListener('click', () => updateFontSize(-0.1));
+
+    // 3. Initial Preferences Load
+    const savedTheme = localStorage.getItem('novel-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const savedSize = localStorage.getItem('novel-font-size') || 1.2;
+    if (content) content.style.fontSize = `${savedSize}rem`;
+
+    // 4. Progress Logic
+    const num = document.getElementById('raw-num')?.innerText || "";
+    const mainTitle = document.getElementById('raw-title')?.innerText || "";
+    if (num && mainTitle) {
+      localStorage.setItem('last-read-path', window.location.pathname);
+      localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
+    }
+  }
+
   function updateScroll() {
     const winScroll = document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -150,30 +184,10 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     }
   }
 
-  function initReader() {
-    const num = document.getElementById('raw-num')?.innerText || "";
-    const mainTitle = document.getElementById('raw-title')?.innerText || "";
-    
-    if (num && mainTitle) {
-      localStorage.setItem('last-read-path', window.location.pathname);
-      localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
-    }
-
-    // Apply saved preferences
-    const savedTheme = localStorage.getItem('novel-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    
-    let currentSize = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-    const content = document.getElementById('novel-content');
-    if (content) content.style.fontSize = `${currentSize}rem`;
-    
-    window.addEventListener('scroll', updateScroll);
-  }
-
-  // 3. Trigger on every Astro page load
   document.addEventListener('astro:page-load', () => {
-    initReader();
-    
+    initReaderLogic();
+    window.addEventListener('scroll', updateScroll);
+
     const stickyHeader = document.getElementById('sticky-header');
     const mainHeader = document.getElementById('main-header');
     if (stickyHeader && mainHeader) {
@@ -187,7 +201,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     }
   });
 
-  // Close drawer when clicking outside
   document.addEventListener('click', (e) => {
     const drawer = document.getElementById('theme-drawer');
     if (drawer && !drawer.contains(e.target)) drawer.classList.remove('active');
@@ -237,7 +250,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
   .chapter-text :global(p) { margin-bottom: 1.5em; text-align: justify; }
 
-  /* NAVIGATION BAR CONSISTENCY FIX */
   .nav-buttons {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
     background: var(--nav-bg); backdrop-filter: blur(15px);
@@ -254,19 +266,17 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     height: 100%;
   }
 
-  /* Consistent Section Dividers */
   .section-divider {
     border-left: 1px solid var(--border-color) !important;
   }
 
-  .btn.icon-btn, .btn.home, .theme-toggle-btn { width: 50px; }
+  .btn.icon-btn, .btn.home, .theme-toggle-btn { width: 50px; cursor: pointer; background: transparent; border: none; }
   
   .btn svg { stroke: var(--text-color); transition: transform 0.2s; }
   .btn:hover svg { transform: scale(1.15); }
   .btn.disabled { opacity: 0.2; pointer-events: none; }
 
   .theme-drawer-container { position: relative; }
-  .theme-toggle-btn { background: transparent; border: none; cursor: pointer; }
   
   .theme-options {
     position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%) translateY(10px);
@@ -282,5 +292,5 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   .theme-btn.dark { background-color: #333333 !important; }
 
   .zoom-controls { padding: 0 12px; gap: 12px; }
-  .zoom-btn { font-family: sans-serif; font-weight: bold; font-size: 0.85rem; background: transparent; border: none; color: var(--text-color); cursor: pointer; }
+  .zoom-btn { font-family: sans-serif; font-weight: bold; font-size: 0.85rem; color: var(--text-color); }
 </style>
