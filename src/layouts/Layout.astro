@@ -1,8 +1,11 @@
 ---
-// Import goes here in the frontmatter, not in a <script> tag
 import { ClientRouter } from 'astro:transitions';
 
-const { title = "Zero Sum City" } = Astro.props;
+const { title = "Zero Sum City", description = "A bilingual novel by Mahmut Tahsin Ülgen" } = Astro.props;
+
+// Generate absolute URLs for social media bots
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImageURL = new URL('/cover.png', Astro.site);
 ---
 
 <!doctype html>
@@ -12,8 +15,23 @@ const { title = "Zero Sum City" } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 		
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={socialImageURL} />
+
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={socialImageURL} />
+
 		<ClientRouter />
 	</head>
 	<body>
@@ -28,6 +46,11 @@ const { title = "Zero Sum City" } = Astro.props;
 		margin: 0;
 		padding: 0;
 		width: 100%;
-		max-height: 100vh;
+		min-height: 100vh; /* Changed from max to min to allow scrolling */
+	}
+
+	/* Prevent horizontal scroll on mobile */
+	body {
+		overflow-x: hidden;
 	}
 </style>
