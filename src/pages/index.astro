@@ -8,7 +8,6 @@ function processChapters(langPrefix) {
   return allChapters
     .filter(entry => entry.slug.startsWith(`${langPrefix}/`))
     .map(entry => {
-      // Build-safe reading time logic
       const content = entry.body || "";
       const words = content.split(/\s+/).filter(Boolean).length;
       const readTime = Math.ceil(words / 200);
@@ -218,15 +217,23 @@ const enChapters = processChapters('en');
   .toc-header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
   .theme-drawer-container { position: relative; margin-bottom: 1.5rem; text-align: center; }
   .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 5px 15px; border-radius: 20px; cursor: pointer; }
+  
+  /* FIXED THEME OPTIONS BOX */
   .theme-options {
     position: absolute; top: 40px; left: 50%; transform: translateX(-50%) translateY(-10px);
     background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px;
-    opacity: 0; pointer-events: none; transition: 0.2s; z-index: 10; align-items: center;
+    opacity: 0; pointer-events: none; transition: 0.2s; z-index: 100; align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   }
   .theme-drawer-container.active .theme-options { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  .theme-btn { width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
+
+  .theme-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; flex-shrink: 0; }
+  .theme-btn.light { background-color: #ffffff !important; }
+  .theme-btn.sepia { background-color: #f4ecd8 !important; }
+  .theme-btn.dark { background-color: #333333 !important; }
+
   .clear-history-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--border-color); background: transparent; color: var(--text-color); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; opacity: 0.6; transition: all 0.2s ease; margin-left: 4px; }
-  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-family: sans-serif; }
+  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-family: sans-serif; position: relative; z-index: 1; }
   .tab-btn { background: none; border: none; color: var(--text-color); opacity: 0.6; cursor: pointer; font-weight: bold; }
   .tab-btn.active { opacity: 1; border-bottom: 2px solid var(--text-color); }
   .vertical-list { display: flex; flex-direction: column; gap: 10px; }

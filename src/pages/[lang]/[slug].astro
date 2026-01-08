@@ -117,7 +117,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     const num = document.getElementById('raw-num')?.innerText || "";
     const mainTitle = document.getElementById('raw-title')?.innerText || "";
     
-    // PERSISTENCE FIX: Save immediately on load
     if (num && mainTitle) {
       localStorage.setItem('last-read-path', window.location.pathname);
       localStorage.setItem('last-read-title', `Chapter ${num}: ${mainTitle}`);
@@ -168,6 +167,11 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       }, { threshold: 0 });
       observer.observe(mainHeader);
     }
+  });
+
+  document.addEventListener('click', (e) => {
+    const drawer = document.getElementById('theme-drawer');
+    if (drawer && !drawer.contains(e.target)) drawer.classList.remove('active');
   });
 </script>
 
@@ -220,14 +224,21 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
   }
   .theme-drawer-container { position: relative; display: flex; align-items: center; }
   .theme-toggle-btn { border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); padding: 0 10px; font-size: 1.1rem; cursor: pointer; background: transparent; color: var(--text-color); }
+  
+  /* FIXED THEME OPTIONS */
   .theme-options {
     position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%) translateY(10px);
     background: var(--nav-bg); border: 1px solid var(--border-color);
     padding: 12px; border-radius: 20px; display: flex; gap: 12px;
     opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1001; align-items: center;
   }
   .theme-drawer-container.active .theme-options { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  .theme-btn { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 1px solid rgba(0,0,0,0.2); padding: 0; }
+  .theme-btn { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 1px solid rgba(0,0,0,0.2); padding: 0; flex-shrink: 0; }
+  .theme-btn.light { background-color: #ffffff !important; }
+  .theme-btn.sepia { background-color: #f4ecd8 !important; }
+  .theme-btn.dark { background-color: #333333 !important; }
+
   .zoom-controls { display: flex; gap: 8px; border-right: 1px solid var(--border-color); padding-right: 10px; }
   .btn { background: transparent; border: none; color: var(--text-color); cursor: pointer; font-family: sans-serif; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; }
   .icon-btn { font-size: 1.3rem; }
