@@ -78,8 +78,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         </span>
       )}
 
-      <div class="nav-section-divider" id="theme-drawer-wrapper">
-        <button class="nav-action-btn" id="theme-trigger">
+      <div class="theme-drawer-container section-divider" id="theme-drawer">
+        <button class="nav-action-btn" id="theme-trigger" title="Appearance">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
         <div class="theme-menu-box" id="theme-menu">
@@ -89,7 +89,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         </div>
       </div>
 
-      <div class="nav-section-divider zoom-wrapper">
+      <div class="zoom-controls section-divider zoom-wrapper">
         <button class="zoom-text-btn" id="z-out">A-</button>
         <button class="zoom-text-btn" id="z-in">A+</button>
       </div>
@@ -112,7 +112,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  // 1. Theme and Font Functions
   function applyTheme(theme) {
     if (!theme) return;
     document.documentElement.setAttribute('data-theme', theme);
@@ -125,20 +124,16 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     localStorage.setItem('novel-font-size', size);
   }
 
-  // 2. Global Click Listener (The Fix)
-  // We attach this to document once; it stays alive during Astro transitions
   if (!window.themeInitialized) {
     document.addEventListener('click', (e) => {
       const target = e.target;
       
-      // Theme Toggle Button
       if (target.closest('#theme-trigger')) {
         e.stopPropagation();
         document.getElementById('theme-menu')?.classList.toggle('open');
         return;
       }
 
-      // Individual Theme Color Dots
       const themeDot = target.closest('[data-set-t]');
       if (themeDot) {
         applyTheme(themeDot.getAttribute('data-set-t'));
@@ -146,7 +141,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         return;
       }
 
-      // Zoom Buttons
       if (target.closest('#z-in') || target.closest('#z-out')) {
         let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
         const next = target.closest('#z-in') ? cur + 0.1 : cur - 0.1;
@@ -154,7 +148,6 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         return;
       }
 
-      // Close drawer if clicking away
       const menu = document.getElementById('theme-menu');
       if (menu && !menu.contains(target)) {
         menu.classList.remove('open');
@@ -163,23 +156,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     window.themeInitialized = true;
   }
 
-  // 3. Page Load Setup
-  document.addEventListener('astro:page-load', () => {
-    // Re-apply saved settings on navigation
-    applyTheme(localStorage.getItem('novel-theme') || 'light');
-    applyFontSize(localStorage.getItem('novel-font-size') || 1.2);
-
-    // Progress logic
-    const num = document.getElementById('raw-num')?.innerText;
-    const title = document.getElementById('raw-title')?.innerText;
-    if (num && title) {
-      localStorage.setItem('last-read-path', window.location.pathname);
-      localStorage.setItem('last-read-title', `Chapter ${num}: ${title}`);
-    }
-  });
-
-  // 4. Scroll Progress
-  window.onscroll = () => {
+  function updateScroll() {
     const win = document.documentElement.scrollTop;
     const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (total <= 0) return;
@@ -191,7 +168,33 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       const path = window.location.pathname.replace(/\/$/, "");
       localStorage.setItem('finished-' + path, 'true');
     }
-  };
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    applyTheme(localStorage.getItem('novel-theme') || 'light');
+    applyFontSize(localStorage.getItem('novel-font-size') || 1.2);
+
+    const num = document.getElementById('raw-num')?.innerText;
+    const title = document.getElementById('raw-title')?.innerText;
+    if (num && title) {
+      localStorage.setItem('last-read-path', window.location.pathname);
+      localStorage.setItem('last-read-title', `Chapter ${num}: ${title}`);
+    }
+
+    window.addEventListener('scroll', updateScroll);
+
+    const sticky = document.getElementById('sticky-header');
+    const main = document.getElementById('main-header');
+    if (sticky && main) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) sticky.classList.add('visible');
+          else sticky.classList.remove('visible');
+        });
+      }, { threshold: 0 });
+      observer.observe(main);
+    }
+  });
 </script>
 
 <style is:global>
@@ -243,13 +246,13 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     display: flex; align-items: center; justify-content: center; z-index: 1000;
     overflow: hidden; padding: 0 5px;
   }
-  .nav-btn-link, #theme-drawer-wrapper, .zoom-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 100%; }
+  .nav-btn-link, #theme-drawer, .zoom-wrapper { display: inline-flex; align-items: center; justify-content: center; height: 100%; }
   .nav-section-divider { border-left: 1px solid var(--border-color) !important; }
   .nav-btn-link, .nav-action-btn { width: 50px; background: transparent; border: none; cursor: pointer; text-decoration: none; color: inherit; display: flex; align-items: center; justify-content: center; }
   .nav-btn-link svg, .nav-action-btn svg { stroke: var(--text-color); }
   .nav-btn-link.disabled { opacity: 0.2; pointer-events: none; }
 
-  #theme-drawer-wrapper { position: relative; }
+  #theme-drawer { position: relative; }
   .theme-menu-box {
     position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%) translateY(10px);
     background: var(--nav-bg); border: 1px solid var(--border-color);
