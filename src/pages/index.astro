@@ -58,13 +58,13 @@ const enChapters = processChapters('en');
       </div>
 
       <div class="tabs">
-        <button id="tab-tr" class="tab-btn active" onclick="switchTab('tr')">Türkçe</button>
+        <button id="tab-en" class="tab-btn active" onclick="switchTab('en')">English</button>
         <span class="tab-divider">/</span>
-        <button id="tab-en" class="tab-btn" onclick="switchTab('en')">English</button>
+        <button id="tab-tr" class="tab-btn" onclick="switchTab('tr')">Türkçe</button>
       </div>
     </header>
 
-    <section id="list-en" class="chapter-list-container" style="display: none;">
+    <section id="list-en" class="chapter-list-container">
       <div class="vertical-list">
         {enChapters.map((chapter) => (
           <a href={`/${chapter.lang}/${chapter.linkSlug}`} class="chapter-button">
@@ -76,7 +76,7 @@ const enChapters = processChapters('en');
       </div>
     </section>
 
-    <section id="list-tr" class="chapter-list-container">
+    <section id="list-tr" class="chapter-list-container" style="display: none;">
       <div class="vertical-list">
         {trChapters.map((chapter) => (
           <a href={`/${chapter.lang}/${chapter.linkSlug}`} class="chapter-button">
@@ -164,7 +164,8 @@ const enChapters = processChapters('en');
 
   document.addEventListener('astro:page-load', () => {
     setTheme(localStorage.getItem('novel-theme') || 'light');
-    switchTab(localStorage.getItem('preferred-lang') || 'tr');
+    // DEFAULT LOGIC: Use 'en' as fallback if preferred-lang isn't set
+    switchTab(localStorage.getItem('preferred-lang') || 'en');
     initResume();
     checkFinishedChapters();
   });
