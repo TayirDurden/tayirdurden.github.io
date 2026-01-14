@@ -1,147 +1,138 @@
 ---
-title: "Cost"
+title: "Bedel"
 
 chapter_number: 6
-lang: "en" 
+lang: "tr"
+
 ---
 
-The door did not lead where doors were supposed to lead.
+Kapı, kapıların açılması gereken yere açılmadı.
 
- Taylor fell.
+Taylor düştü.
 
- Not down—sideways, through a space that resisted definition. Light smeared. Sound inverted.
+Aşağı değil—yana, tanımlara direnen bir boşluğun içinden düştü. Işık bulandı. Ses tersyüz oldu.
 
- For a fraction of a second, he felt the system’s grip tighten, as if offended by the audacity of
- escape.
+Saniyenin küçük bir parçası kadar kısa bir an, sanki bu kaçış cüretine içerlemişçesine, sistemin pençesini sıktığını hissetti.
 
- Then it let go.
+Sonra bıraktı.
 
- He hit the ground hard enough to drive the breath from his lungs. Real ground. Cold. Uneven.
+Nefesini ciğerlerinden söküp alacak şiddette yere çakıldı. Gerçek zemin. Soğuk. Engebeli.
 
- The smell of oil and damp metal burned his nose.
+Yağ ve nemli metal kokusu burnunu yaktı.
 
- The door snapped shut behind him.
+Kapı arkasından sertçe kapandı.
 
- Darkness followed.
+Ardından karanlık çöktü.
 
- For a long moment, Taylor couldn’t move. Panic arrived late, stumbling over pain. His ears
- rang. His hands shook violently, refusing commands.
+Taylor uzun bir süre kıpırdayamadı. Panik geç geldi, acının üstünden sendeleyerek. Kulakları çınlıyordu. Elleri şiddetle titriyor, komutları reddediyordu.
 
- He was alive.
+Hayattaydı.
 
- That realization did not bring comfort.
+Bu farkındalık teselli getirmedi.
 
- Emergency lights blinked on, one by one, revealing a narrow maintenance tunnel scarred by
- age and neglect. Pipes ran along the walls like exposed veins. This place had not been
- optimized.
+Acil durum ışıkları birer birer yanıp, yılların ve ihmalin yaralarını taşıyan dar bir bakım tünelini aydınlattı. Borular, deri altından fırlamış damarlar gibi duvarlar boyunca uzanıyordu. Burası optimize edilmemişti.
 
- Someone groaned.
+Birisi inledi.
 
- Taylor’s head snapped up.
+Taylor'ın başı hızla döndü.
 
- A man lay a few meters away, curled on his side. Middle-aged. Civilian clothing. Blood at his
- temple.
+Birkaç metre ötede, yanına kıvrılmış bir adam yatıyordu. Orta yaşlı. Sivil giyimli. Şakağında kan vardı.
 
- “Oh god,” Taylor whispered, crawling toward him. “Hey. Hey, can you hear me?”
+"Tanrım," diye fısıldadı Taylor, ona doğru sürünerek. "Hey. Hey, beni duyabiliyor musun?"
 
- The man stirred, eyes fluttering open.
+Adam kımıldandı, gözleri titrekçe aralandı.
 
- “They… said it was just a check,” he murmured. “I only asked why my access was late.”
+"Bana... sadece bir kontrol olduğunu söylemişlerdi," diye mırıldandı. "Sadece erişimimin neden geciktiğini sormuştum."
 
- Taylor’s stomach dropped.
+Taylor’ın midesine bir yumru oturdu.
 
- Footsteps echoed.
+Ayak sesleri yankılandı.
 
- Not running. Never running.
+Koşmuyorlardı. Asla koşmazlardı.
 
- The agents’ voices filtered through the sealed hatch above, distorted but calm.
+Ajanların sesi yukarıdaki mühürlü kapağın ardından sızıyordu; boğuk ama sakindi.
 
- “Secondary displacement confirmed.”
+"İkincil yer değiştirme doğrulandı."
 
- “Civilian involvement noted.”
+"Sivil katılımı tespit edildi."
 
- “Adjusting response.”
+"Müdahale ayarlanıyor."
 
- The man’s eyes focused on Taylor.
+Adamın gözleri Taylor'a odaklandı.
 
- “What did you do?” he asked.
+"Ne yaptın sen?" diye sordu.
 
- Taylor couldn’t answer.
+Taylor cevap veremedi.
 
- The emergency lights flickered.
+Acil durum ışıkları titredi.
 
- A pressure built in the air, subtle but crushing, like altitude sickness arriving all at once.
+Havada bir basınç oluştu, belli belirsiz ama ezici, sanki aniden bastıran bir vurgun gibi.
 
- “Please remain still,” a voice said—not from above, but everywhere. “Movement increases
- risk.”
+"Lütfen hareketsiz kalın," dedi bir ses—yukarıdan değil, her yerden geliyordu. "Hareket, riski artırır."
 
- The man began to shake.
+Adam titremeye başladı.
 
- “No,” Taylor said hoarsely. “No, please. He didn’t—he doesn’t know anything.”
+"Hayır," dedi Taylor boğuk bir sesle. "Hayır, lütfen. O hiçbir şey—hiçbir şey bilmiyor."
 
- Silence.
+Sessizlik.
 
- “Risk threshold exceeded,” the voice said. “Redistributing variance.”
+"Risk eşiği aşıldı," dedi ses. "Sapma yeniden dağıtılıyor."
 
- Then, gently: “Correct.”
+Sonra nazikçe: "Düzeltildi."
 
- Taylor felt something shift, like a decision being finalized.
+Taylor bir şeyin kaydığını hissetti, bir kararın kesinleştirilmesi gibi.
 
- The pressure vanished.
+Basınç kayboldu.
 
- The man exhaled once—and did not inhale again.
+Adam bir kez nefes verdi—ve bir daha almadı.
 
- It wasn’t violent. No convulsions. No drama. Just a quiet cessation, as if a process had been
- terminated.
+Şiddet yoktu. Çırpınma yok. Drama yok. Sadece sessiz bir bitiş, sanki bir işlem sonlandırılmış gibi.
 
- Taylor screamed.
+Taylor çığlık attı.
 
- The sound tore out of him raw and animal, echoing down the tunnel. He grabbed the man’s
- shoulders, shook him, begged without words.
+Ses içinden çıplak ve hayvani bir şekilde koptu, tünelde yankılandı. Adamın omuzlarına yapıştı, onu sarstı, kelimesizce yalvardı.
 
- Nothing.
+Hiçbir şey yok.
 
- “Risk resolved,” the voice said softly. “Variance contained.”
+"Risk çözümlendi," dedi ses usulca. "Sapma kontrol altına alındı."
 
- Taylor collapsed, sobbing, forehead pressed to the cold floor.
+Taylor hıçkırarak yere çöktü, alnını soğuk zemine dayadı.
 
- This was his fault.
+Bu onun hatasıydı.
 
- Not because he’d opened the door.
+Kapıyı açtığı için değil.
 
- Because he’d stepped through it.
+İçinden geçtiği için.
 
- A hand grabbed his collar and yanked him upright.
+Bir el yakasına yapıştı ve onu sertçe ayağa dikti.
 
- “Look at me.”
+"Bana bak."
 
- Her voice.
+Kadının sesi.
 
- The woman dragged him deeper into the tunnel, away from the sealed hatch, away from the
- body.
+Kadın onu tünelin derinliklerine, mühürlü kapaktan ve cesetten uzağa sürükledi.
 
- “You don’t get to look away,” she hissed. “Not after this.”
+"Gözlerini kaçırma lüksün yok," diye tısladı. "Bundan sonra olmaz."
 
- Tears blurred his vision. “He died because of me.”
+Gözyaşları görüşünü bulandırdı. "Benim yüzümden öldü."
 
- “Yes,” she said immediately. No comfort. No delay. “And if you survive, more people will
- too.”
+"Evet," dedi kadın hemen. Teselli yok. Tereddüt yok. "Ve eğer hayatta kalırsan, daha niceleri de ölecek."
 
- “That’s not—”
+"Bu öyle—"
 
- “That’s the math,” she snapped. “And it’s already being run without you.”
+"Matematik bu," diye çıkıştı kadın. "Ve sensiz de zaten işliyor."
 
- She stopped, forcing him to face her.
+Durdu ve onu kendisine bakmaya zorladı.
 
- “This is the part where you break,” she said quietly. “So, break fast.”
+"İşte burası kırılacağın yer," dedi sessizce. "O yüzden hızlı kırıl."
 
- Taylor’s knees buckled.
+Taylor’ın dizlerinin bağı çözüldü.
 
- He didn’t scream this time.
+Bu sefer çığlık atmadı.
 
- He just nodded.
+Sadece başını salladı.
 
- Somewhere far above them, the system recalculated.
+Çok yukarıda, bir yerlerde Sistem yeniden hesaplama yaptı.
 
- Below, something irreversible took root.
+Aşağıda, geri dönüşü olmayan bir şey kök saldı.
 
