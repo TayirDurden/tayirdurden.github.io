@@ -1,147 +1,136 @@
 ---
-title: "Recalculation"
+title: "Yeniden Hesaplama"
 
 chapter_number: 5
-lang: "en" 
+lang: "tr"
+
 ---
 
-The pursuit began politely.
+Takip kibarca başladı.
 
- Taylor noticed it in the smallest possible way: his commute ran long. Not enough to justify a
- complaint. Just long enough to register. The walkway hesitated twice, correcting itself with a
- softness that felt rehearsed.
+Taylor bunu olabilecek en küçük şekilde fark etti: işe gidiş yolu uzadı. Şikayet etmeyi haklı çıkaracak kadar değil. Sadece kayda değecek kadar. Yürüyüş yolu iki kez tereddüt etti, kendini prova edilmiş gibi hissettiren bir yumuşaklıkla düzeltti.
 
- \\\\ ROUTE OPTIMIZED.
+\\\\ ROTA OPTİMİZE EDİLDİ.
 
- He stopped walking.
+Yürümeyi bıraktı.
 
- Others flowed around him without irritation, paths adjusting to preserve harmony. The system
- waited. Patient. Observant.
+Diğerleri rahatsızlık olmadan etrafından aktı, yollar uyumu korumak için ayarlandı. Sistem bekledi. Sabırla. Gözlemci bir şekilde.
 
- Taylor stepped forward again.
+Taylor yeniden adım attı.
 
- The city resumed as if nothing had happened.
+Şehir hiçbir şey olmamış gibi devam etti.
 
- At work, a new task appeared in his queue.
+İş yerinde, kuyruğunda yeni bir görev belirdi.
 
- It shouldn’t have.
+Olmaması gerekirdi.
 
- Observers weren’t assigned active investigations. Their role was retrospective, confirmatory.
+Gözlemcilere aktif soruşturmalar atanmazdı. Rolleri geriye dönük, doğrulayıcıydı.
 
- This task was marked differently—no urgency tag, no visible origin.
+Bu görev farklı işaretlenmişti—aciliyet etiketi yok, görünür kaynak yok.
 
- \\\\ VERIFICATION REQUEST: SUBJECTIVE ANOMALY.
+\\\\ DOĞRULAMA TALEBİ: ÖZNEL ANOMALİ.
 
- His mouth went dry.
+Ağzı kurudu.
 
- The task opened into a mirror.
+Görev bir aynaya dönüştü.
 
- Not literally. A composite profile assembled from his own data: sleep irregularities, route
- deviations, delayed responses, elevated cognitive variance. Harmless metrics in isolation.
+Gerçek anlamda değil. Kendi verilerinden derlenmiş bir bileşik profil: uyku düzensizlikleri, rota sapmaları, gecikmeli tepkiler, yükselen bilişsel sapma. Tek başına zararsız ölçümler.
 
- Together, a pattern.
+Birlikte, bir örüntü.
 
- Taylor closed the task.
+Taylor görevi kapattı.
 
- It reopened.
+Yeniden açıldı.
 
- A soft tone sounded. Not an alarm. A reminder.
+Yumuşak bir ton çaldı. Alarm değil. Hatırlatma.
 
- \\\\ PLEASE COMPLETE TO IMPROVE SYSTEM ACCURACY.
+\\\\ SİSTEM DOĞRULUĞUNU ARTIRMAK İÇİN LÜTFEN TAMAMLAYIN.
 
- He stood abruptly, chair sliding back louder than intended. A few colleagues glanced up,
- concern already dissolving into neutrality.
+Aniden ayağa kalktı, sandalye beklenenden daha yüksek bir sesle geriye kaydı. Birkaç meslektaşı başını kaldırdı, endişe çoktan tarafsızlığa dönüşmüştü.
 
- “I need air,” he said.
+"Havaya ihtiyacım var," dedi.
 
- No one questioned it.
+Kimse sorgulamadı.
 
- Outside, the sky was perfect. It always was. Clouds arranged themselves with aesthetic
- restraint. The temperature hovered exactly where comfort outweighed sensation.
+Dışarıda gökyüzü mükemmeldi. Hep öyleydi. Bulutlar kendilerini estetik bir ölçülülükle dizmişti. Sıcaklık tam da konforun, hissetme dürtüsüne baskın geldiği o noktada asılı kalmıştı.
 
- Taylor walked without destination.
+Taylor varış noktası olmadan yürüdü.
 
- The device burned in his pocket now—not warm, not active, just present. He imagined it
- pulsing, broadcasting him like a fault line.
+Cihaz artık cebinde bir kor gibiydi—ısınıyor ya da çalışıyor değildi, sadece oradaydı. Taylor, cihazın bir nabız gibi attığını, onu bir fay hattıymışçasına açığa vurduğunu hayal etti.
 
- He turned down a side street.
+Bir ara sokağa saptı.
 
- The street brightened.
+Sokak aydınlandı.
 
- Subtle. Almost kind.
+Belli belirsiz. Neredeyse nazikçe.
 
- He turned again. Same result. The city didn’t block him; it corrected him. Each deviation
- smoothed into something more efficient, more visible.
+Tekrar döndü. Sonuç aynıydı. Şehir ona engel olmuyor, onu düzeltiyordu. Yoldan her sapışı, daha verimli ve daha görünür bir rotaya doğru törpüleniyordu.
 
- A chime sounded in his ear.
+Kulağında bir çınlama çaldı.
 
- \\\\ CHECK-IN AVAILABLE.
+\\\\ DURUM BİLDİRİMİ MEVCUT.
 
- His heart hammered.
+Kalbi gümbürdüyordu.
 
- “No,” he whispered.
+"Hayır," diye fısıldadı.
 
- The word felt treasonous.
+Bu kelime ihanet gibi geliyordu.
 
- He ducked into a transit stairwell—one of the older ones, rarely used. The lights lagged by
- half a second when he entered.
+Bir toplu taşıma merdiven boşluğuna daldı—eskilerden biri, nadiren kullanılan. İçeri girdiğinde ışıklar yarım saniye gecikti.
 
- Good.
+İyi.
 
- He descended two levels before the signal returned.
+Sinyal geri dönmeden önce iki kat aşağı indi.
 
- \\\\ LOCATION CONFIRMED.
+\\\\ KONUM DOĞRULANDI.
 
- Footsteps echoed above him.
+Yukarıda ayak sesleri yankılandı.
 
- They were not hurried.
+Aceleci değillerdi.
 
- Two figures appeared at the top of the stairs, dressed in the same neutral tones as everyone
- else. No insignia. No weapons. Their presence felt administrative.
+Merdivenlerin tepesinde, herkes gibi aynı nötr tonlarda giyinmiş iki kişi belirdi. Hiçbir işaret yoktu. Silah yoktu. Varlıkları idari bir hava taşıyordu.
 
- “Taylor,” one of them said, voice warm, practiced. “You’ve been experiencing some variance.
+"Taylor," dedi biri, sesi sıcak, alışkın. "Biraz sapma yaşıyorsun.
 
- We’re here to help.”
+Yardım etmek için buradayız."
 
- Help had always sounded like relief before.
+Yardım kelimesi daha önce hep bir rahatlama ifadesi gibi gelmişti.
 
- Now it sounded like containment.
+Şimdi tecrit gibi geliyordu.
 
- “I’m fine,” he said.
+"İyiyim," dedi.
 
- “Of course,” the other replied. “That’s consistent with your profile.”
+"Elbette," diye cevapladı diğeri. "Bu profilinle tutarlı."
 
- They descended one step.
+Bir basamak indiler.
 
- Taylor’s hand closed around the device.
+Taylor'ın eli cihazı kavradı.
 
- Every instinct screamed not to use it. Not yet. Using it would collapse possibilities into
- consequences.
+Tüm içgüdüleri onu kullanmaması gerektiğini haykırıyordu. Henüz değil. Kullanmak olasılıkları sonuçlara dönüştürürdü.
 
- “Please return with us,” the first said gently. “This process is painless.”
+"Lütfen bizimle dön," dedi ilki nazikçe. "Bu işlem acısızdır."
 
- The lights flickered.
+Işıklar titredi.
 
- Not overhead.
+Tepesindekiler değil.
 
- In his pocket.
+Cebinde.
 
- The device vibrated once.
+Cihaz bir kez titredi.
 
- Taylor looked up.
+Taylor başını kaldırdı.
 
- The agents paused, expressions unchanged—but something in the air shifted, like a held
- breath.
+Ajanlar duraksadı, yüz ifadeleri değişmedi—ama havada bir şeyler değişmişti. Sanki tüm dünya nefesini tutmuştu.
 
- The device warmed.
+Cihaz ısındı.
 
- Not hot. Alive.
+Yakıcı değil. Canlı.
 
- Behind the agents, a maintenance panel slid open a fraction of an inch.
+Ajanların arkasında bir bakım kapağı, sadece bir milim kayarak aralandı.
 
- Just enough.
+Tam yetecek kadar.
 
- Taylor didn’t think.
+Taylor düşünmedi.
 
- He ran.
+Koştu.
 

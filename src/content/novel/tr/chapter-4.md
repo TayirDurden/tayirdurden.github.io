@@ -1,90 +1,76 @@
 ---
-title: "Quiet"
+title: "Sessizlik"
 
 chapter_number: 4
-lang: "en" 
+lang: "tr"
+
 ---
 
-Taylor waited longer than was reasonable.
+Taylor makul olandan daha uzun bekledi.
 
- He didn’t know what he was waiting for. A signal, maybe. A sensation. Some internal
- confirmation that what he’d just done mattered. None came. The shaft remained still, the air
- steady, the hum distant and unconcerned.
+Neyi beklediğini bilmiyordu. Belki bir işaret, bir his. Yaptığının önemli olduğuna dair içsel bir onay. Hiçbiri gelmedi. Tünel hareketsiz kaldı, hava sabitti, uğultu uzaktan ve kayıtsızdı.
 
- Eventually, he moved.
+Sonunda hareket etti.
 
- The hatch opened onto a pedestrian artery bright enough to feel accusatory. Color returned all
- at once. Sound layered itself back into place. People moved with the same calm precision as
- always, each of them carried gently by invisible optimizations.
+Kapak, suçlayıcı bir his uyandıracak kadar parlak bir yaya yoluna açılıyordu. Renkler birden geri döndü. Ses katmanları yeniden yerini aldı. İnsanlar her zamanki gibi aynı sakin hassasiyetle hareket ediyor, her biri görünmez optimizasyonlar tarafından nazikçe taşınıyordu.
 
- No one looked at him.
+Kimse ona bakmadı.
 
- That was the worst part.
+En kötü yanı da buydu.
 
- He half-expected something—eyes lingering too long, a soft chime in his ear, a courteous
- request to pause where he was. Instead, the world accepted him without question, as if the last
- hour had been trimmed cleanly from existence.
+Az çok bir şeyler bekliyordu—çok uzun kalan bakışlar, kulağında yumuşak bir çınlama, olduğu yerde duraklaması için kibar bir istek. Onun yerine dünya onu sorgulamadan kabul etti, sanki son saat var oluştan temizce kesilmişti.
 
- The device sat heavy in his pocket.
+Cihaz cebinde ağır duruyordu.
 
- He didn’t touch it.
+Ona dokunmadı.
 
- At home, the apartment greeted him by name. Lights adjusted. The temperature drifted to his
- preference before he registered discomfort. A meal suggestion hovered politely at the edge of
- his vision.
+Evde, daire onu ismiyle karşıladı. Işıklar ayarlandı. Sıcaklık, rahatsızlık hissetmeden önce tercih ettiği seviyeye geldi. Bir yemek önerisi görüş alanının kenarında kibarca asılı duruyordu.
 
- He dismissed it.
+Reddetti.
 
- Silence followed. Artificial, but precise.
+Sessizlik takip etti. Yapay ama kesin bir sessizlik.
 
- Taylor sat on the floor with his back against the wall. He hadn’t done that in years. Furniture
- existed to prevent such inefficiencies.
+Taylor sırtını duvara verip yere oturdu. Bunu yapmayalı yıllar olmuştu. Mobilyalar bu tür verimsizlikleri önlemek için vardı.
 
- His thoughts tried to arrange themselves. Failed.
+Düşünceleri bir hizaya girmeye çabaladı. Başaramadı.
 
- He considered the possibility that she’d fabricated everything. That there was no deeper
- wrongness, no hidden layers—just a moment of misinterpretation amplified by boredom and a
- stranger’s intensity.
+Kadının her şeyi uydurmuş olma ihtimalini tarttı. Belki de derinlerde yatan bir terslik, gizli saklı katmanlar falan yoktu ortada; her şey, can sıkıntısının ve o yabancının o yoğun halinin köpürttüğü anlık bir yanlış anlamadan ibaretti.
 
- The system would correct him if that were true.
+Eğer öyle olsaydı, sistem onu düzeltirdi.
 
- It didn’t.
+Düzeltmedi.
 
- Minutes passed. Or hours. Time blurred when nothing pressed against it.
+Dakikalar geçti. Belki de saatler. Akışına direnç gösteren bir şey olmayınca zaman bulanıklaşıyordu.
 
- He stood and paced, then stopped, then laughed once—a short, involuntary sound that startled
- him more than fear would have.
+Ayağa kalkıp volta attı, durdu, sonra bir kez güldü—bu kısa, istemsiz ses onu korkudan daha çok irkiltti.
 
- “This is ridiculous,” he said aloud.
+"Bu saçmalık," dedi yüksek sesle.
 
- The apartment did not respond.
+Daire cevap vermedi.
 
- He reached into his pocket, fingers brushing the device.
+Cebine uzandı, parmakları cihaza değdi.
 
- Don’t.
+Yapma.
 
- The word wasn’t hers. It came from somewhere quieter. Somewhere newly awake.
+Kelime kadının değildi. Daha sessiz bir yerden geliyordu. Yeni uyanmış bir yerden.
 
- He withdrew his hand.
+Elini geri çekti.
 
- Sleep arrived eventually, uninvited. Not the deep, curated rest the system preferred, but
- something fractured and thin. He dreamed of corridors that narrowed without moving, of
- lights that flickered only when he wasn’t looking directly at them.
+Uyku eninde sonunda, davetsiz bir şekilde geldi. Sistem'in tercih ettiği derin, özenle hazırlanmış bir dinlenme değil, kırık ve ince bir şey. Rüyasında hareket etmeden daralan koridorlar, sadece doğrudan bakmadığında titreyen ışıklar gördü.
 
- When he woke, the certainty was worse.
+Uyandığında, kesinlik daha da kötüydü.
 
- Nothing had changed.
+Hiçbir şey değişmemişti.
 
- The city moved on. The feeds were clean. His work queue was empty. Whatever anomaly had
- touched his life had left no mark the system considered worth addressing.
+Şehir devam etti. Akışlar temizdi. İş kuyruğu boştu. Hayatına dokunan anomali Sistem'in ele almaya değer bulduğu herhangi bir iz bırakmamıştı.
 
- Taylor showered, dressed, and stepped back into perfection.
+Taylor duş aldı, giyindi ve mükemmelliğe geri adım attı.
 
- Inside, something stayed behind.
+İçinde bir şey kalmıştı.
 
- That night, as he lay awake again, he understood the true shape of isolation.
+O gece, tekrar uykusuz yatarken, yalnızlığın gerçek şeklini anladı.
 
- It wasn’t being alone.
+Yalnız olmak değildi.
 
- It was being the only one who knew that being alone had finally become preferable.
+Yalnız olmanın sonunda tercih edilir hale geldiğini bilen tek kişi olmaktı.
 

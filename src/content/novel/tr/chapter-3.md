@@ -1,140 +1,125 @@
 ---
-title: "Pressure"
+title: "Baskı"
 
 chapter_number: 3
-lang: "en"
+lang: "tr"
 
 ---
 
-They stopped only when the air changed.
+Ancak hava değiştiğinde durdular.
 
- The maintenance shaft narrowed, walls close enough that Taylor could feel their chill through
- his clothes. The hum of the city faded into something thinner, more distant. Here, the system’s
- presence felt reduced—not gone, just muted, like a hand resting lightly on the back of his
- neck instead of gripping his throat.
+Bakım tüneli daraldı, duvarlar o kadar yakındı ki Taylor kıyafetlerinin üzerinden bile soğukluğunu hissedebiliyordu. Şehrin uğultusu giderek incelen, uzaklaşan bir şeye dönüştü. Burada Sistem'in varlığı azalmış hissediliyordu—yok olmamıştı, sadece sessizleşmişti, tıpkı boğazını kavramak yerine ensesine hafifçe yaslanmış bir el gibi.
 
- She sealed the hatch behind them and waited.
+Kadın arkalarından kapağı kapattı ve bekledi.
 
- For a long moment, neither of them spoke.
+Uzun bir süre ikisi de konuşmadı.
 
- Taylor became acutely aware of himself: his breathing, too loud; his hands, half-curled as if
- expecting instructions. He resisted the urge to fill the silence. Something told him silence was
- the point.
+Taylor, kendisinin farkına varmaya başladı: nefes alışverişi çok gürültülüydü; elleri, sanki talimat bekliyormuş gibi yarı kıvrılmıştı. Sessizliği doldurma dürtüsüne direndi. İçinden bir ses ona sessizliğin asıl amaç olduğunu söylüyordu.
 
- Finally, she said, “You followed faster than I expected.”
+Sonunda kadın, "Beklediğimden hızlı takip ettin." dedi.
 
- “I didn’t know what else to do.”
+"Başka ne yapacağımı bilmiyordum."
 
- “That’s not an answer.”
+"Bu bir cevap değil."
 
- He swallowed. “I didn’t want to go back.”
+Yutkundu. "Geri dönmek istemedim."
 
- Her eyes stayed on him. Sharp. Evaluating. “To what?”
+Kadının gözleri üzerinde kaldı. Keskin. Değerlendirici. "Neye?"
 
- He hesitated, then surprised himself. “Nothing.”
+Tereddüt etti, sonra kendini şaşırttı. "Hiçbir şeye."
 
- The word hung between them.
+Kelime aralarında asılı kaldı.
 
- She studied him like a flawed instrument. “People who say that usually mean everything.”
+Kadın ona kusurlu bir alet gibi baktı. "Bunu söyleyenler genellikle her şeyi kasteder."
 
- “I don’t,” he said. “Everything works. That’s the problem.”
+"Ben kastetmiyorum," dedi. "Her şey çalışıyor. Sorun bu."
 
- A flicker—interest, maybe—crossed her face and vanished. “Careful,” she said. “That kind of
- thinking gets people flagged.”
+Bir kıpırtı—belki ilgi—yüzünden geçti ve kayboldu. "Dikkatli ol," dedi. "Bu tür düşünceler insanları işaretletir."
 
- “I know.”
+"Biliyorum."
 
- That earned him a longer look.
+Bu ona daha uzun bir bakış kazandırdı.
 
- “How?”
+"Nasıl?"
 
- He exhaled slowly. “I saw a log that shouldn’t exist.”
+Yavaşça nefes verdi. "Var olmaması gereken bir kayıt gördüm."
 
- She didn’t react. Not visibly. But the air felt tighter.
+Kadın görünürde bir tepki vermedi. Ama hava daha gergin hissettirdi.
 
- “Describe it.”
+"Açıkla."
 
- “I can’t,” he said. “Not properly. It was… empty. Like the system forgot to lie.”
+"Yapamam," dedi. "Doğru düzgün yapamam. Boştu... Sanki Sistem yalan söylemeyi unutmuş gibiydi."
 
- Her jaw set.
+Kadının çenesi kasıldı.
 
- “You don’t have the clearance for that level,” she said.
+"O seviye için yetkin yok," dedi.
 
- “I know.”
+"Biliyorum."
 
- “Then someone made a mistake.”
+"O zaman biri bir hata yaptı."
 
- “Or something broke.”
+"Ya da bir şey bozuldu."
 
- Silence again.
+Yeniden sessizlik.
 
- She stepped closer. Not threatening. Intimate. “Listen to me carefully,” she said. “Curiosity is
- not neutral. It feels harmless because the system taught you that it is. But it’s not. It’s a
- weight. And once you pick it up, it doesn’t let go.”
+Kadın yaklaştı. Tehdit eder gibi değil. Samimi. "Beni dikkatle dinle," dedi. "Merak nötr değildir. Zararsız hissettiriyor çünkü Sistem sana öyle öğretti. Ama değil. Bir ağırlık. Ve bir kez eline aldın mı, bırakmaz."
 
- Taylor met her gaze. “Is that what happened to you?”
+Taylor bakışlarını karşıladı. "Sana da bu mu oldu?"
 
- Her eyes hardened. “Don’t.”
+Kadının gözleri sertleşti. "Yapma."
 
- “I’m not trying to—”
+"Yapmaya çalışmıyorum—"
 
- “You are,” she said. “You just don’t know it yet.”
+"Çalışıyorsun," dedi. "Sadece henüz bilmiyorsun."
 
- The lights flickered once overhead.
+Tepedeki ışıklar bir kez titredi.
 
- They both noticed.
+İkisi de fark etti.
 
- Her voice dropped. “It’s already recalculating,” she said. “Which means this conversation has
- an expiration date.”
+Kadının sesi alçaldı. "Şimdiden yeniden hesaplıyor," dedi. "Bu da bu konuşmanın bir son kullanma tarihi olduğu anlamına geliyor."
 
- Taylor’s chest tightened. “Then tell me what I should do.”
+Taylor'ın göğsü sıkıştı. "O zaman ne yapmam gerektiğini söyle."
 
- She shook her head. “No. That’s how you end up obedient. You need to decide who you are
- before the system does it for you.”
+Kadın başını salladı. "Hayır. İtaatkâr olmanın yolu bu. Sistem senin için yapmadan önce kim olduğuna senin karar vermen gerek."
 
- “I don’t know who that is.”
+"Kim olduğumu bilmiyorum."
 
- “That,” she said quietly, “is the most dangerous answer you could give.”
+"İşte," dedi sessizce, "verebileceğin en tehlikeli cevap bu."
 
- Another flicker. Longer this time.
+Başka bir titreme. Bu sefer daha uzun.
 
- She reached into her coat and pulled out a small, matte device—unmarked: no lights, no
- interface.
+Kadın paltosuna uzandı ve küçük, mat bir cihaz çıkardı—işaretsiz: ışık yok, arayüz yok.
 
- “This stays off unless I say otherwise,” she said, pressing it into his hand. “If you turn it on
- alone, it will find you. Not maybe. Will.”
+"Bu ben söylemedikçe kapalı kalır," dedi, cihazı eline bastırarak. "Yalnızken açarsan, seni bulur. İhtimalden bahsetmiyorum. Kesinlikle bulur."
 
- “What is it?”
+"Bu nedir?"
 
- “A door,” she said. “And a test.”
+"Bir kapı," dedi. "Ve bir test."
 
- “A test for what?”
+"Ne için bir test?"
 
- She paused, just long enough for him to feel the weight of it.
+Kadın duraksadı; tam da Taylor'ın, avucundakinin ağırlığını hissetmesine yetecek kadar.
 
- “Whether you’re worth the trouble,” she said.
+"Zahmet etmeye değip değmeyeceğin için," dedi.
 
- The hum around them surged, then receded.
+Etraflarındaki uğultu yükseldi, sonra çekildi.
 
- She stepped back toward the opposite hatch. “We don’t move together again for a while,” she
- said. “If you’re followed, you’re on your own.”
+Kadın karşı kapağa doğru geri çekildi. "Bir süre bir daha birlikte hareket etmiyoruz," dedi. "Eğer takip ediliyorsan, kendi başının çaresine bakmak zorundasın."
 
- “And if I’m not?”
+"Ya takip edilmiyorsam?"
 
- “Then you’ll come looking for me,” she said. “People like you always do.”
+"O zaman beni aramaya gelirsin," dedi. "Senin gibiler hep yapar."
 
- She keyed the hatch.
+Kapağı açtı.
 
- Before stepping through, she added, without looking back, “One more thing.”
+İçeri geçmeden önce, arkasına bakmadan ekledi, "Bir şey daha."
 
- He waited.
+Bekledi.
 
- “You weren’t supposed to see what you saw,” she said. “That means either the system
- failed… or it wanted you to.”
+"Gördüğün şeyi görmemen gerekiyordu," dedi. "Bu ya Sistem'in başarısız olduğu anlamına gelir... ya da senin görmeni istediği."
 
- The hatch closed.
+Kapak kapandı.
 
- Taylor stood alone in the narrow shaft, the device heavy in his palm.
+Taylor, dar tünelde yalnız başına duruyordu, cihaz avucunda ağırdı.
 
- For the first time, the silence felt earned.
-
+İlk kez, sessizlik hak edilmiş gibi geldi.

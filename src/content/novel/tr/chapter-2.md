@@ -10,7 +10,7 @@ Sistem ona uyumayı önerdi.
 
 Taylor reddetti.
 
-Dairesinin karanlığında uzanmıştı—karanlık opsiyoneldi ama o böyle tutuyordu—hiç tam olarak dinlenmeyen bir binanın neredeyse sessizliğini dinliyordu. Bir yerlerde bir şey vızıldıyordu. Hep öyle olurdu. Ses bir zamanlar onu rahatlatırdı. Bu gece, nefes alıyor gibi hissettiriyordu.
+Dairesinin karanlığında uzanmıştı—karanlık opsiyoneldi ama o böyle tutuyordu—hiç tam olarak dinlenmeyen bir binanın neredeyse sessizliğini dinliyordu. Bir yerlerde bir şey uğulduyordu. Hep öyle olurdu. Ses bir zamanlar onu rahatlatırdı. Bu gece, nefes alıyor gibi hissettiriyordu.
 
 O anı tekrar tekrar oynatıyordu: direniş, duraklama, arayüzün onu tartarcasına tereddüt etme şekli. Gözlemcilerin iz bırakması gerekmiyordu. Işığın camdan geçmesi gibi veriden geçmeleri gerekiyordu.
 
