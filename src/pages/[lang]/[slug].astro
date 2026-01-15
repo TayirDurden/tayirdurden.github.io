@@ -38,29 +38,23 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const { chapter, prevSlug, nextSlug } = Astro.props;
 const { Content } = await chapter.render();
-
 const title = chapter.data.title || "Untitled";
-const filenameNum = chapter.slug.match(/(\d+)$/)?.[0];
-const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filenameNum ?? "";
+const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? "";
 ---
 
 <Layout title={title}>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
 
   <div id="sticky-header" class="sticky-header">
-    <span class="sticky-text">
-      <span class="sticky-num">Chapter {chapterNum}</span>
-      <span class="sticky-divider">|</span>
-      {title}
-    </span>
+    <span class="sticky-text">Ch. {chapterNum} | {title}</span>
   </div>
 
   <div class="chapter-container">
     <div id="main-header" class="chapter-header">
       <span class="chapter-number">Chapter <span id="raw-num">{chapterNum}</span></span>
-      <h1 id="raw-title" transition:name={`title-${lang}-${chapterNum}`}>{title}</h1>
+      <h1 id="raw-title">{title}</h1>
     </div>
     
     <hr class="separator" />
@@ -70,20 +64,10 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     </article>
 
     <nav class="nav-buttons">
-      {prevSlug ? (
-        <a href={`/${lang}/${prevSlug}`} class="nav-btn" title="Previous">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </a>
-      ) : (
-        <span class="nav-btn disabled">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </span>
-      )}
+      {prevSlug ? <a href={`/${lang}/${prevSlug}`} class="nav-btn">←</a> : <span class="nav-btn disabled">←</span>}
 
       <div class="drawer-wrap section-divider">
-        <button class="nav-btn" id="theme-trigger">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-        </button>
+        <button class="nav-btn" id="theme-trigger">🎨</button>
         <div class="drawer theme-menu" id="theme-menu">
           <button class="dot light" data-set-theme="light"></button>
           <button class="dot sepia" data-set-theme="sepia"></button>
@@ -92,9 +76,7 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
       </div>
 
       <div class="drawer-wrap section-divider">
-        <button class="nav-btn" id="font-trigger">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
-        </button>
+        <button class="nav-btn" id="font-trigger">Aa</button>
         <div class="drawer font-menu" id="font-menu">
             <button class="f-opt" data-set-font="Lora" style="font-family:'Lora'">Lora</button>
             <button class="f-opt" data-set-font="EB Garamond" style="font-family:'EB Garamond'">Garamond</button>
@@ -109,19 +91,9 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         <button class="z-btn" id="z-in">A+</button>
       </div>
 
-      <a href="/" class="nav-btn section-divider" title="Home">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </a>
+      <a href="/" class="nav-btn section-divider">🏠</a>
 
-      {nextSlug ? (
-        <a href={`/${lang}/${nextSlug}`} class="nav-btn section-divider" title="Next">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </a>
-      ) : (
-        <span class="nav-btn disabled section-divider">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </span>
-      )}
+      {nextSlug ? <a href={`/${lang}/${nextSlug}`} class="nav-btn section-divider">→</a> : <span class="nav-btn disabled section-divider">→</span>}
     </nav>
   </div>
 </Layout>
@@ -153,8 +125,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
         applyS(Math.max(0.8, Math.min(2.5, t.closest('#z-in') ? cur + 0.1 : cur - 0.1)));
         return;
       }
-      document.getElementById('theme-menu').classList.remove('open');
-      document.getElementById('font-menu').classList.remove('open');
+      document.getElementById('theme-menu')?.classList.remove('open');
+      document.getElementById('font-menu')?.classList.remove('open');
     });
     window.readerInitialized = true;
   }
@@ -174,8 +146,38 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
     const win = document.documentElement.scrollTop, ht = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const bar = document.getElementById("myBar");
     if (bar && ht > 0) bar.style.width = (win / ht) * 100 + "%";
+    if (win / ht > 0.95) localStorage.setItem('finished-' + window.location.pathname.replace(/\/$/, ""), 'true');
   };
 </script>
 
 <style is:global>
-  :root, [data-theme="light"] { --bg-color: #fff; --text-color: #222; --border-color: #ddd; --sticky-bg: rgba(255,255,25
+  :root, [data-theme="light"] { --bg-color: #fff; --text-color: #222; --border-color: #ddd; --sticky-bg: rgba(255,255,255,0.98); --accent: #007aff; }
+  [data-theme="sepia"] { --bg-color: #f4ecd8; --text-color: #5b4636; --border-color: #d3c9b1; --sticky-bg: rgba(244,236,216,0.98); --accent: #8c786a; }
+  [data-theme="dark"] { --bg-color: #1a1a1a; --text-color: #e0e0e0; --border-color: #444; --sticky-bg: rgba(26,26,26,0.98); --accent: #bb86fc; }
+  html, body { background-color: var(--bg-color) !important; color: var(--text-color); margin: 0; width: 100%; }
+</style>
+
+<style>
+  .progress-container { position: fixed; top: 0; width: 100%; height: 4px; z-index: 2202; }
+  .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s; }
+  .sticky-header { position: fixed; top: 0; left: 0; width: 100%; height: 60px; background: var(--sticky-bg); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; z-index: 900; transform: translateY(-100%); transition: 0.3s; backdrop-filter: blur(10px); }
+  .sticky-header.visible { transform: translateY(0); }
+  .chapter-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 150px 1.5rem; }
+  .chapter-header { text-align: center; margin-bottom: 3rem; }
+  .chapter-text { line-height: 1.8; transition: 0.2s; }
+  .nav-buttons { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--bg-color); height: 50px; border: 1px solid var(--border-color); border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; z-index: 1000; padding: 0 5px; }
+  .nav-btn, .zoom-wrap { display: flex; align-items: center; justify-content: center; height: 100%; width: 45px; cursor: pointer; border: none; background: transparent; color: inherit; font-size: 1.2rem; }
+  .section-divider { border-left: 1px solid var(--border-color); }
+  .zoom-wrap { width: auto; padding: 0 10px; gap: 8px; }
+  .z-btn { background: transparent; border: none; font-weight: bold; color: inherit; cursor: pointer; font-size: 0.8rem; }
+  .nav-btn.disabled { opacity: 0.2; pointer-events: none; }
+  .drawer-wrap { position: relative; height: 100%; }
+  .drawer { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%) translateY(10px); background: var(--bg-color); border: 1px solid var(--border-color); padding: 10px; border-radius: 15px; opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1001; display: flex; }
+  .drawer.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .theme-menu { gap: 12px; }
+  .dot { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
+  .dot.light { background: #fff !important; } .dot.sepia { background: #f4ecd8 !important; } .dot.dark { background: #333 !important; }
+  .font-menu { flex-direction: column; width: 140px; gap: 4px; }
+  .f-opt { background: transparent; border: none; color: var(--text-color); text-align: left; padding: 6px 10px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+  .f-opt:hover { background: rgba(0,0,0,0.05); }
+</style>
