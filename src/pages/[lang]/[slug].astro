@@ -45,6 +45,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 ---
 
 <Layout title={title}>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
   <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
 
   <div id="sticky-header" class="sticky-header">
@@ -69,41 +71,54 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 
     <nav class="nav-buttons">
       {prevSlug ? (
-        <a href={`/${lang}/${prevSlug}`} class="nav-btn-link" title="Previous">
+        <a href={`/${lang}/${prevSlug}`} class="nav-btn" title="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </a>
       ) : (
-        <span class="nav-btn-link disabled">
+        <span class="nav-btn disabled">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </span>
       )}
 
-      <div class="theme-drawer-container section-divider" id="theme-drawer">
-        <button class="nav-action-btn" id="theme-trigger" title="Appearance">
+      <div class="drawer-wrap section-divider">
+        <button class="nav-btn" id="theme-trigger">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
         </button>
-        <div class="theme-options" id="theme-menu">
-          <button class="theme-btn light" data-set-theme="light"></button>
-          <button class="theme-btn sepia" data-set-theme="sepia"></button>
-          <button class="theme-btn dark" data-set-theme="dark"></button>
+        <div class="drawer theme-menu" id="theme-menu">
+          <button class="dot light" data-set-theme="light"></button>
+          <button class="dot sepia" data-set-theme="sepia"></button>
+          <button class="dot dark" data-set-theme="dark"></button>
         </div>
       </div>
 
-      <div class="zoom-controls section-divider">
-        <button class="zoom-btn" id="font-dec">A-</button>
-        <button class="zoom-btn" id="font-inc">A+</button>
+      <div class="drawer-wrap section-divider">
+        <button class="nav-btn" id="font-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        </button>
+        <div class="drawer font-menu" id="font-menu">
+            <button class="f-opt" data-set-font="Lora" style="font-family:'Lora'">Lora</button>
+            <button class="f-opt" data-set-font="EB Garamond" style="font-family:'EB Garamond'">Garamond</button>
+            <button class="f-opt" data-set-font="Merriweather" style="font-family:'Merriweather'">Merriweather</button>
+            <button class="f-opt" data-set-font="Inter" style="font-family:'Inter'">Inter</button>
+            <button class="f-opt" data-set-font="JetBrains Mono" style="font-family:'JetBrains Mono'">Mono</button>
+        </div>
       </div>
 
-      <a href="/" class="nav-btn-link section-divider" title="Home">
+      <div class="zoom-wrap section-divider">
+        <button class="z-btn" id="z-out">A-</button>
+        <button class="z-btn" id="z-in">A+</button>
+      </div>
+
+      <a href="/" class="nav-btn section-divider" title="Home">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </a>
 
       {nextSlug ? (
-        <a href={`/${lang}/${nextSlug}`} class="nav-btn-link section-divider" title="Next">
+        <a href={`/${lang}/${nextSlug}`} class="nav-btn section-divider" title="Next">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </a>
       ) : (
-        <span class="nav-btn-link disabled section-divider">
+        <span class="nav-btn disabled section-divider">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </span>
       )}
@@ -112,158 +127,55 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? filename
 </Layout>
 
 <script is:inline>
-  // GLOBAL EVENT LISTENER (The only way to ensure buttons work after Astro navigation)
+  const applyT = (t) => { document.documentElement.setAttribute('data-theme', t); localStorage.setItem('novel-theme', t); };
+  const applyF = (f) => { 
+    const c = document.getElementById('novel-content'); 
+    if (c) c.style.fontFamily = f + (f === 'Inter' ? ', sans-serif' : (f === 'JetBrains Mono' ? ', monospace' : ', serif')); 
+    localStorage.setItem('novel-font', f);
+  };
+  const applyS = (s) => { 
+    const c = document.getElementById('novel-content');
+    if (c) c.style.fontSize = s + "rem";
+    localStorage.setItem('novel-font-size', s);
+  };
+
   if (!window.readerInitialized) {
     document.addEventListener('click', (e) => {
-      const target = e.target;
-
-      // 1. Theme Drawer Toggle
-      if (target.closest('#theme-trigger')) {
-        e.stopPropagation();
-        document.getElementById('theme-menu')?.classList.toggle('active');
-        return;
-      }
-
-      // 2. Setting Theme
-      const themeBtn = target.closest('[data-set-theme]');
-      if (themeBtn) {
-        const theme = themeBtn.getAttribute('data-set-theme');
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('novel-theme', theme);
-        document.getElementById('theme-menu')?.classList.remove('active');
-        return;
-      }
-
-      // 3. Font Size
-      if (target.closest('#font-inc') || target.closest('#font-dec')) {
+      const t = e.target;
+      if (t.closest('#theme-trigger')) { e.stopPropagation(); document.getElementById('font-menu').classList.remove('open'); document.getElementById('theme-menu').classList.toggle('open'); return; }
+      if (t.closest('#font-trigger')) { e.stopPropagation(); document.getElementById('theme-menu').classList.remove('open'); document.getElementById('font-menu').classList.toggle('open'); return; }
+      const tBtn = t.closest('[data-set-theme]');
+      if (tBtn) { applyT(tBtn.getAttribute('data-set-theme')); document.getElementById('theme-menu').classList.remove('open'); return; }
+      const fBtn = t.closest('[data-set-font]');
+      if (fBtn) { applyF(fBtn.getAttribute('data-set-font')); document.getElementById('font-menu').classList.remove('open'); return; }
+      if (t.closest('#z-in') || t.closest('#z-out')) {
         let cur = parseFloat(localStorage.getItem('novel-font-size')) || 1.2;
-        const next = target.closest('#font-inc') ? cur + 0.1 : cur - 0.1;
-        const final = Math.max(0.8, Math.min(2.5, next));
-        const content = document.getElementById('novel-content');
-        if (content) content.style.fontSize = final + "rem";
-        localStorage.setItem('novel-font-size', final);
+        applyS(Math.max(0.8, Math.min(2.5, t.closest('#z-in') ? cur + 0.1 : cur - 0.1)));
         return;
       }
-
-      // 4. Close menu if clicking away
-      const menu = document.getElementById('theme-menu');
-      if (menu && !menu.contains(target)) {
-        menu.classList.remove('active');
-      }
+      document.getElementById('theme-menu').classList.remove('open');
+      document.getElementById('font-menu').classList.remove('open');
     });
     window.readerInitialized = true;
   }
 
-  function updateScroll() {
-    const win = document.documentElement.scrollTop;
-    const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    if (total <= 0) return;
-    const pct = (win / total) * 100;
-    const bar = document.getElementById("myBar");
-    if (bar) bar.style.width = pct + "%";
-    if (pct > 95) {
-      const path = window.location.pathname.replace(/\/$/, "");
-      localStorage.setItem('finished-' + path, 'true');
-    }
-  }
-
   document.addEventListener('astro:page-load', () => {
-    // Re-apply preferences
-    const savedTheme = localStorage.getItem('novel-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    const savedSize = localStorage.getItem('novel-font-size') || 1.2;
-    const content = document.getElementById('novel-content');
-    if (content) content.style.fontSize = savedSize + "rem";
-
-    // Progress logic
-    const num = document.getElementById('raw-num')?.innerText;
-    const title = document.getElementById('raw-title')?.innerText;
-    if (num && title) {
-      localStorage.setItem('last-read-path', window.location.pathname);
-      localStorage.setItem('last-read-title', "Chapter " + num + ": " + title);
-    }
-
-    window.addEventListener('scroll', updateScroll);
-
-    // Sticky Header
-    const sticky = document.getElementById('sticky-header');
-    const main = document.getElementById('main-header');
+    applyT(localStorage.getItem('novel-theme') || 'light');
+    applyF(localStorage.getItem('novel-font') || 'Lora');
+    applyS(localStorage.getItem('novel-font-size') || 1.2);
+    
+    const sticky = document.getElementById('sticky-header'), main = document.getElementById('main-header');
     if (sticky && main) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (!e.isIntersecting) sticky.classList.add('visible');
-          else sticky.classList.remove('visible');
-        });
-      }, { threshold: 0 });
-      observer.observe(main);
+      new IntersectionObserver(([e]) => sticky.classList.toggle('visible', !e.isIntersecting)).observe(main);
     }
   });
+
+  window.onscroll = () => {
+    const win = document.documentElement.scrollTop, ht = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const bar = document.getElementById("myBar");
+    if (bar && ht > 0) bar.style.width = (win / ht) * 100 + "%";
+  };
 </script>
 
 <style is:global>
-  :root, [data-theme="light"] {
-    --bg-color: #ffffff; --text-color: #222222; --meta-color: #666666;
-    --nav-bg: rgba(255, 255, 255, 0.95); --border-color: #dddddd;
-    --sticky-bg: rgba(255, 255, 255, 0.98); --accent: #007aff;
-  }
-  [data-theme="sepia"] {
-    --bg-color: #f4ecd8; --text-color: #5b4636; --meta-color: #8c786a;
-    --nav-bg: rgba(244, 236, 216, 0.95); --border-color: #d3c9b1;
-    --sticky-bg: rgba(244, 236, 216, 0.98); --accent: #8c786a;
-  }
-  [data-theme="dark"] {
-    --bg-color: #1a1a1a; --text-color: #e0e0e0; --meta-color: #999999;
-    --nav-bg: rgba(40, 40, 40, 0.95); --border-color: #444444;
-    --sticky-bg: rgba(26, 26, 26, 0.98); --accent: #bb86fc;
-  }
-  html, body { background-color: var(--bg-color) !important; color: var(--text-color); margin: 0; padding: 0; width: 100%; }
-</style>
-
-<style>
-  .progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 2202; background: transparent; }
-  .progress-bar { height: 4px; background: var(--accent); width: 0%; transition: width 0.1s ease-out; }
-  .sticky-header {
-    position: fixed; top: 0; left: 0; width: 100%; height: 60px;
-    background: var(--sticky-bg); border-bottom: 1px solid var(--border-color);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 900; transform: translateY(-100%); transition: transform 0.3s;
-    backdrop-filter: blur(10px);
-  }
-  .sticky-header.visible { transform: translateY(0); }
-  .sticky-text { font-family: 'Georgia', serif; font-size: 1rem; }
-  .sticky-num { font-weight: bold; opacity: 0.7; margin-right: 10px; text-transform: uppercase; font-size: 0.8rem; }
-  .chapter-container { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 150px 1.5rem; font-family: 'Georgia', serif; }
-  .chapter-header { text-align: center; margin-bottom: 3rem; }
-  .chapter-header h1 { font-size: 2.5rem; margin-top: 0.5rem; }
-  .separator { border: 0; border-top: 1px solid var(--border-color); width: 100px; margin: 2rem auto; }
-  .chapter-text { font-size: 1.2rem; line-height: 1.8; transition: font-size 0.2s ease; }
-  .chapter-text :global(p) { margin-bottom: 1.5em; text-align: justify; }
-
-  .nav-buttons {
-    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-    background: var(--nav-bg); backdrop-filter: blur(15px);
-    height: 50px; border: 1px solid var(--border-color);
-    border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 0 5px;
-  }
-  .nav-btn-link, .theme-drawer-container, .zoom-controls { display: inline-flex; align-items: center; justify-content: center; height: 100%; width: 50px; }
-  .zoom-controls { width: auto; padding: 0 10px; gap: 10px; }
-  .section-divider { border-left: 1px solid var(--border-color) !important; }
-  
-  .nav-action-btn, .zoom-btn { background: transparent; border: none; cursor: pointer; color: inherit; display: flex; align-items: center; justify-content: center; }
-  .nav-btn-link svg, .nav-action-btn svg { stroke: var(--text-color); }
-  .nav-btn-link.disabled { opacity: 0.2; pointer-events: none; }
-
-  .theme-options {
-    position: absolute; bottom: 65px; left: 50%; transform: translateX(-50%) translateY(10px);
-    background: var(--nav-bg); border: 1px solid var(--border-color);
-    padding: 12px; border-radius: 20px; display: flex; gap: 12px;
-    opacity: 0; pointer-events: none; transition: 0.2s; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  }
-  .theme-options.active { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  .theme-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
-  .theme-btn.light { background: #fff !important; }
-  .theme-btn.sepia { background: #f4ecd8 !important; }
-  .theme-btn.dark { background: #333 !important; }
-  .zoom-btn { font-family: sans-serif; font-weight: bold; font-size: 0.85rem; }
-</style>
+  :root, [data-theme="light"] { --bg-color: #fff; --text-color: #222; --border-color: #ddd; --sticky-bg: rgba(255,255,25

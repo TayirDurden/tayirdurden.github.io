@@ -15,12 +15,11 @@ Perfection was boring.
  The city reflected that perfection with embarrassing enthusiasm. Buildings curved softly
  toward the sky as if competing to be least offensive to the eye. Streets cleaned themselves.
 
- Screens adjusted their brightness to match your mood. Every problem had been solved so long
- ago that people had forgotten problems were ever a thing.
+ Screens adjusted their brightness to match your mood before you noticed it shift. Every problem had been solved so long ago that people had forgotten problems were ever a thing.
 
- Taylor was a systems observer—an occupation so light it barely qualified as labor. He
+ Taylor was a systems observer, an occupation so light it barely qualified as labor. He
  monitored abstract flows: energy usage trends, social satisfaction metrics, error logs that
- almost never populated. His job wasn’t to fix anything; it was to confirm that nothing needed
+ almost never populated. His job wasn’t to fix anything. It was to confirm that nothing needed
  fixing.
 
  Most days, nothing did.
@@ -33,11 +32,10 @@ Perfection was boring.
  Taylor had none of that. Not because he was denied it—denial didn’t exist anymore—but
  because nothing ever stuck.
 
- It wasn’t sadness, exactly. Sadness implied loss, and he had never lost anything. It was a
+ It wasn’t sadness. Sadness implied loss, and he had never lost anything. It was a
  quieter erosion, a sense that every experience slid off him before it could leave a mark.
 
- Conversations looped. Faces blurred. Even memories arrived pre-softened, as if the system
- had compressed them for storage efficiency.
+ Conversations looped. Faces blurred. Even memories arrived pre-softened, compressed for storage efficiency.
 
  Sometimes he wondered whether loneliness still counted as loneliness if it caused no pain. If
  it was simply the absence of signal rather than the presence of noise.

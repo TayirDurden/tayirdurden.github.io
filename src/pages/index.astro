@@ -28,6 +28,8 @@ const enChapters = processChapters('en');
 ---
 
 <Layout title="Zero Sum City">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
   <div class="bg-layer"></div>
   <main class="toc-container">
     <div id="resume-container" style="display: none;">
@@ -55,10 +57,11 @@ const enChapters = processChapters('en');
         </div>
       </div>
 
-      <div class="tabs">
-        <button id="tab-en" class="tab-btn active" data-tab="en">English</button>
-        <span class="tab-divider">/</span>
-        <button id="tab-tr" class="tab-btn" data-tab="tr">Türkçe <small class="soon-label">(Soon)</small></button>
+      <div class="tab-wrapper">
+        <div class="tabs">
+          <button id="tab-en" class="tab-btn active" data-tab="en">English</button>
+          <button id="tab-tr" class="tab-btn" data-tab="tr">Türkçe <small class="soon-label">Soon</small></button>
+        </div>
       </div>
     </header>
 
@@ -158,39 +161,63 @@ const enChapters = processChapters('en');
 </script>
 
 <style is:global>
+  :root {
+    --font-main: 'Lora', serif;
+    --font-ui: 'Inter', sans-serif;
+  }
   :root, [data-theme="light"] { --bg-color: transparent; --text-color: #222; --border-color: #ddd; --card-bg: rgba(255,255,255,0.85); --accent: #007aff; }
-  [data-theme="sepia"] { --bg-color: transparent; --text-color: #5b4636; --border-color: #d3c9b1; --card-bg: rgba(244,236,216,0.9); --accent: #8c786a; }
-  [data-theme="dark"] { --bg-color: transparent; --text-color: #e0e0e0; --border-color: #444; --card-bg: rgba(30,30,30,0.85); --accent: #bb86fc; }
+  [data-theme="sepia"] { --bg-color: transparent; --text-color: #5b4636; --border-color: #d3c9b1; --card-bg: rgba(244, 236, 216, 0.9); --accent: #8c786a; }
+  [data-theme="dark"] { --bg-color: transparent; --text-color: #e0e0e0; --border-color: #444; --card-bg: rgba(30, 30, 30, 0.85); --accent: #bb86fc; }
   html, body { margin: 0; padding: 0; background-color: #000 !important; }
 </style>
 
 <style>
+  /* FONTS */
+  .toc-container h1, .chapter-name { font-family: var(--font-main); }
+  .author, .chapter-badge, .read-time, .tab-btn, .theme-toggle-btn, .resume-label, .footer-socials { font-family: var(--font-ui); }
+
   .chapter-button.finished::after { content: '✓'; margin-left: auto; font-weight: bold; color: #2ecc71; padding-left: 10px; font-size: 1.2rem; }
   .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('/cover.png'); background-size: cover; background-position: center; filter: blur(15px) brightness(0.9); transform: scale(1.1); }
-  .toc-container { max-width: 700px; margin: 4rem auto; padding: 3rem; font-family: 'Georgia', serif; color: var(--text-color); background: var(--card-bg); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--border-color); position: relative; z-index: 10; }
+  
+  .toc-container { 
+    max-width: 700px; margin: 4rem auto; padding: 3rem; 
+    color: var(--text-color); background: var(--card-bg); backdrop-filter: blur(5px); 
+    border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+    border: 1px solid var(--border-color); position: relative; z-index: 10; 
+  }
+
   .resume-banner { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 0.8rem 1.2rem; border-radius: 50px; margin-bottom: 2rem; text-decoration: none; color: var(--text-color); font-size: 0.85rem; border-left: 5px solid var(--accent); }
+  
   .toc-header { text-align: center; margin-bottom: 2rem; }
-  .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 18px; border-radius: 20px; cursor: pointer; display: inline-flex; align-items: center; }
+  .toc-header h1 { font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: -1px; }
+  .author { opacity: 0.7; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+
+  .theme-drawer-container { position: relative; margin: 1.5rem 0 2.5rem 0; text-align: center; }
+  .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 18px; border-radius: 20px; cursor: pointer; display: inline-flex; align-items: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  
   .theme-options { position: absolute; top: 45px; left: 50%; transform: translateX(-50%) translateY(-10px); background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: 0.2s; z-index: 100; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
   .theme-options.active { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
   .theme-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
   .theme-btn.light { background: #fff !important; } .theme-btn.sepia { background: #f4ecd8 !important; } .theme-btn.dark { background: #333 !important; }
-  .tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; align-items: baseline; }
-  .tab-btn { background: none; border: none; color: var(--text-color); opacity: 0.6; cursor: pointer; font-weight: bold; }
-  .tab-btn.active { opacity: 1; border-bottom: 2px solid var(--text-color); }
-  
-  /* FIXED SPACING SECTION */
+
+  /* PILL TABS */
+  .tab-wrapper { display: flex; justify-content: center; margin-bottom: 2rem; }
+  .tabs { display: inline-flex; background: rgba(0,0,0,0.05); padding: 4px; border-radius: 50px; border: 1px solid var(--border-color); }
+  [data-theme="dark"] .tabs { background: rgba(255,255,255,0.05); }
+  .tab-btn { background: none; border: none; color: var(--text-color); opacity: 0.5; cursor: pointer; font-weight: 700; padding: 8px 24px; border-radius: 40px; transition: all 0.2s ease; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .tab-btn.active { opacity: 1; background: var(--card-bg); box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: var(--accent); }
+  .soon-label { font-size: 0.6rem; opacity: 0.5; display: block; line-height: 1; margin-top: 2px; }
+
   .chapter-button { display: flex; align-items: center; padding: 12px 20px; text-decoration: none; color: var(--text-color); border: 1px solid var(--border-color); border-radius: 10px; background: rgba(0,0,0,0.02); transition: all 0.2s ease; margin-bottom: 10px; }
   .chapter-button:hover { background: var(--card-bg); border-color: var(--accent); transform: translateX(5px); }
-  .chapter-badge { font-weight: bold; min-width: 90px; font-size: 0.85rem; opacity: 0.7; background: var(--border-color); padding: 4px 8px; border-radius: 5px; margin-right: 15px; text-align: center; flex-shrink: 0; }
   
-  /* ADDED FLEX-GROW AND MARGIN HERE */
-  .chapter-name { flex-grow: 1; font-size: 1.1rem; margin-right: 15px; }
-  .read-time { font-size: 0.7rem; opacity: 0.5; margin-left: auto; white-space: nowrap; font-family: sans-serif; }
+  .chapter-badge { font-weight: bold; min-width: 90px; font-size: 0.75rem; opacity: 0.7; background: var(--border-color); padding: 4px 8px; border-radius: 5px; margin-right: 15px; text-align: center; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+  .chapter-name { flex-grow: 1; font-size: 1.2rem; margin-right: 15px; font-weight: 700; }
+  .read-time { font-size: 0.75rem; opacity: 0.5; margin-left: auto; white-space: nowrap; font-weight: 600; }
   
-  .index-footer { margin-top: 4rem; padding-bottom: 2rem; text-align: center; font-family: sans-serif; }
-  .footer-divider { width: 50px; height: 1px; background: var(--border-color); margin: 0 auto 2rem; }
-  .footer-name { font-family: 'Georgia', serif; font-weight: bold; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-color); }
-  .footer-copyright { font-size: 0.8rem; opacity: 0.6; margin-bottom: 1.5rem; color: var(--text-color); }
-  .footer-socials a { color: var(--accent); text-decoration: none; margin: 0 10px; font-size: 0.85rem; }
+  .index-footer { margin-top: 5rem; padding-bottom: 1rem; text-align: center; }
+  .footer-divider { width: 40px; height: 1px; background: var(--border-color); margin: 0 auto 2.5rem; }
+  .footer-name { font-family: var(--font-main); font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-color); }
+  .footer-copyright { font-family: var(--font-ui); font-size: 0.75rem; opacity: 0.5; margin-bottom: 1.5rem; letter-spacing: 0.5px; }
+  .footer-socials a { color: var(--accent); text-decoration: none; margin: 0 10px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 </style>
