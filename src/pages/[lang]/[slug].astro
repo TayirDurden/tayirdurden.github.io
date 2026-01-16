@@ -133,6 +133,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? "";
     localStorage.setItem('novel-font-size', s);
   };
 
+  let isFinished = false;
+
   if (!window.readerInitialized) {
     document.addEventListener('click', (e) => {
       const t = e.target;
@@ -153,6 +155,8 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? "";
     window.readerInitialized = true;
   }
 
+  let stickyObserver = null;
+
   document.addEventListener('astro:page-load', () => {
     applyT(localStorage.getItem('novel-theme') || 'light');
     applyF(localStorage.getItem('novel-font') || 'Lora');
@@ -160,15 +164,24 @@ const chapterNum = chapter.data.order ?? chapter.data.chapter_number ?? "";
     
     const sticky = document.getElementById('sticky-header'), main = document.getElementById('main-header');
     if (sticky && main) {
-      new IntersectionObserver(([e]) => sticky.classList.toggle('visible', !e.isIntersecting)).observe(main);
+      if (stickyObserver) stickyObserver.disconnect();
+      stickyObserver = new IntersectionObserver(([e]) => sticky.classList.toggle('visible', !e.isIntersecting));
+      stickyObserver.observe(main);
     }
+    
+    localStorage.setItem('last-read-path', window.location.pathname);
+    const titleEl = document.getElementById('raw-title');
+    if (titleEl) localStorage.setItem('last-read-title', titleEl.textContent);
   });
 
   window.onscroll = () => {
     const win = document.documentElement.scrollTop, ht = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const bar = document.getElementById("myBar");
     if (bar && ht > 0) bar.style.width = (win / ht) * 100 + "%";
-    if (win / ht > 0.95) localStorage.setItem('finished-' + window.location.pathname.replace(/\/$/, ""), 'true');
+    if (win / ht > 0.95 && !isFinished) {
+      localStorage.setItem('finished-' + window.location.pathname.replace(/\/$/, ""), 'true');
+      isFinished = true;
+    }
   };
 </script>
 

@@ -42,7 +42,7 @@ const enChapters = processChapters('en');
 
     <header class="toc-header">
       <h1>Zero Sum City</h1>
-      <p class="author">By Mahmut Tahsin Ülgen</p>
+      <p class="author">By Mehmet Tahir Ürge</p>
       
       <div class="theme-drawer-container">
         <button class="theme-toggle-btn" id="idx-theme-trigger">
@@ -92,7 +92,7 @@ const enChapters = processChapters('en');
     <footer class="index-footer">
       <div class="footer-divider"></div>
       <p class="footer-name">Zero Sum City</p>
-      <p class="footer-copyright">&copy; {new Date().getFullYear()} Mahmut Tahsin Ülgen. All rights reserved.</p>
+      <p class="footer-copyright">&copy; {new Date().getFullYear()} Mehmet Tahir Ürge. All rights reserved.</p>
       <div class="footer-socials">
         <a href="mailto:info@tahirurge.com">Contact</a>
         <span class="dot">•</span>
@@ -156,7 +156,8 @@ const enChapters = processChapters('en');
     }
     document.querySelectorAll('.chapter-button').forEach(btn => {
       const url = new URL(btn.href);
-      if (localStorage.getItem('finished-' + url.pathname.replace(/\/$/, ""))) btn.classList.add('finished');
+      const normalizedPath = url.pathname.replace(/\/+$/g, "");
+      if (localStorage.getItem('finished-' + normalizedPath)) btn.classList.add('finished');
     });
   });
 </script>
@@ -173,18 +174,20 @@ const enChapters = processChapters('en');
   .toc-container h1, .chapter-name, .footer-name { font-family: var(--font-main); }
   .author, .chapter-badge, .read-time, .tab-btn, .theme-toggle-btn, .resume-label, .footer-copyright, .footer-socials { font-family: var(--font-ui); }
   
-  /* RESTORED: Checkmarks */
   .chapter-button.finished::after { content: '✓'; margin-left: auto; font-weight: bold; color: #2ecc71; padding-left: 10px; font-size: 1.2rem; flex-shrink: 0; }
   
   .bg-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('/cover.png'); background-size: cover; background-position: center; filter: blur(15px) brightness(0.9); transform: scale(1.1); }
   
   .toc-container { max-width: 700px; margin: 4rem auto; padding: 3rem; color: var(--text-color); background: var(--card-bg); backdrop-filter: blur(5px); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border: 1px solid var(--border-color); position: relative; z-index: 10; }
 
-  /* RESTORED: Last Read Banner Styling */
+  /* RESTORED AND CENTERED: Last Read Banner Styling */
   .resume-banner { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--border-color); padding: 0.8rem 1.2rem; border-radius: 50px; margin-bottom: 2rem; text-decoration: none; color: var(--text-color); font-size: 0.85rem; border-left: 5px solid var(--accent); }
   .resume-label { font-weight: bold; text-transform: uppercase; font-size: 0.7rem; opacity: 0.6; margin-right: 15px; }
 
-  /* MOBILE FONT FIXES */
+  /* CENTERED HEADER TITLE */
+  .toc-header { text-align: center; margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; }
+  .toc-header h1 { font-size: 3rem; margin-bottom: 0.5rem; margin-top: 0; }
+
   @media (max-width: 600px) {
     .toc-container { margin: 1rem; padding: 1.5rem; }
     .toc-header h1 { font-size: 2.2rem; }
@@ -194,7 +197,7 @@ const enChapters = processChapters('en');
 
   .theme-drawer-container { position: relative; margin: 1.5rem 0 2.5rem 0; text-align: center; }
   .theme-toggle-btn { background: none; border: 1px solid var(--border-color); color: var(--text-color); padding: 8px 18px; border-radius: 20px; cursor: pointer; display: inline-flex; align-items: center; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
-  .theme-options { position: absolute; top: 45px; left: 50%; transform: translateX(-50%) translateY(-10px); background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: 0.2s; z-index: 100; align-items: center; }
+  .theme-options { position: absolute; top: 45px; left: 50%; transform: translateX(-50%) translateY(-10px); background: var(--card-bg); border: 1px solid var(--border-color); padding: 12px; border-radius: 15px; display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: 0.2s; z-index: 100; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
   .theme-options.active { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
   .theme-btn { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.2); cursor: pointer; }
   .theme-btn.light { background: #fff !important; } .theme-btn.sepia { background: #f4ecd8 !important; } .theme-btn.dark { background: #333 !important; }
