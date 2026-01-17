@@ -111,6 +111,14 @@ const enChapters = processChapters('en');
     document.addEventListener('click', (e) => {
       const target = e.target;
       
+      if (target.closest('#resume-link')) {
+        const href = document.getElementById('resume-link').href;
+        if (href && href !== window.location.href + '#') {
+          window.location.href = href;
+        }
+        return;
+      }
+
       if (target.closest('#theme-icon-toggle')) {
         const current = document.documentElement.getAttribute('data-theme') || 'light';
         const next = current === 'light' ? 'dark' : (current === 'dark' ? 'sepia' : 'light');
